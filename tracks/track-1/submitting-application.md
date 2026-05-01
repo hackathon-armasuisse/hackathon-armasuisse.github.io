@@ -2,6 +2,7 @@
 title: Submitting Application
 parent: "Track 1: Documentation Assistant"
 nav_order: 4
+layout: home
 permalink: /tracks/track-1/submitting-application/
 ---
 

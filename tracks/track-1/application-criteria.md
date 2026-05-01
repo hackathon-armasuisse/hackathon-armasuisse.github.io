@@ -1,5 +1,6 @@
 ---
 title: Application Criteria
+layout: home
 parent: "Track 1: Documentation Assistant"
 nav_order: 3
 permalink: /tracks/track-1/application-criteria/

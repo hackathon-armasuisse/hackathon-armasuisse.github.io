@@ -1,5 +1,6 @@
 ---
 title: General Information
+layout: home
 nav_order: 2
 has_children: false
 permalink: /general-information/

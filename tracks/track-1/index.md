@@ -1,6 +1,7 @@
 ---
 title: "Track 1: Documentation Assistant"
 nav_order: 3
+layout: home
 has_children: true
 permalink: /tracks/track-1/
 ---

@@ -1,6 +1,7 @@
 ---
 title: Data
 parent: "Track 1: Documentation Assistant"
+layout: home
 nav_order: 2
 permalink: /tracks/track-1/data/
 ---

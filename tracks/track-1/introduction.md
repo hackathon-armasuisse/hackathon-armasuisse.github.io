@@ -2,6 +2,7 @@
 title: Introduction
 parent: "Track 1: Documentation Assistant"
 nav_order: 1
+layout: home
 permalink: /tracks/track-1/introduction/
 ---
 
