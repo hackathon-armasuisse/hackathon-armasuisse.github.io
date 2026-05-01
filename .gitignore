@@ -1,0 +1,27 @@
+# Jekyll build output
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Local Ruby state
+vendor/
+.bundle/
+
+# Python venv + caches
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Notebook OCR outputs (generated)
+notebooks/output/
+
+# Local download/scrape artefacts
+.cookies
+.manuals.html
+.scripts/.cache/
+
+# OS
+Thumbs.db
+.DS_Store

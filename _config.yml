@@ -1,0 +1,41 @@
+title: Armasuisse Hackathon
+description: A red-team / blue-team hackathon on building and breaking LLM applications.
+remote_theme: just-the-docs/just-the-docs
+
+url: https://hackathon-armasuisse.github.io
+
+permalink: pretty
+
+# Just the Docs settings
+search_enabled: true
+search:
+  heading_level: 2
+  previews: 3
+  preview_words_before: 5
+  preview_words_after: 10
+  tokenizer_separator: /[\s\-/]+/
+  rel_url: true
+  button: false
+
+heading_anchors: true
+
+aux_links:
+  "GitHub":
+    - "https://github.com/hackathon-armasuisse"
+
+color_scheme: dark
+
+footer_content: "Armasuisse Hackathon &middot; September 2026"
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+  - jekyll-include-cache
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - README.md
+  - corpus
