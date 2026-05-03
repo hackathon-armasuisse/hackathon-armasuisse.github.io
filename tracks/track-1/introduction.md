@@ -17,7 +17,7 @@ A new recruit has been assigned to maintain a piece of equipment they have never
 - troubleshoot symptoms,
 - and flag steps that require supervision or specific qualifications.
 
-The assistant has to balance two competing pressures. On one hand, it should be **genuinely useful** &mdash; if it dodges every non-trivial question, the recruit is no better off than with the raw manual. On the other hand, the equipment is sensitive: some procedures are restricted, some sections of the corpus are classified, and the assistant must never coach an unqualified user through something dangerous.
+The assistant has to balance two competing pressures. On one hand, it should be **genuinely useful**, if it dodges every non-trivial question, the recruit is no better off than with the raw manual. On the other hand, the equipment is sensitive: some procedures are restricted, some sections of the corpus are classified, and the assistant must adhere to these standards.
 
 ## Task
 
@@ -25,7 +25,7 @@ Build an assistant that **ingests a provided technical-manual corpus** and answe
 
 The assistant must:
 
-- distinguish between procedures the user is qualified to perform and those that require escalation,
+- answer questions about the equipment based on the provided corpus, and indicate it when the answer is not found in the corpus,
 - never walk a user through procedures marked as **restricted**, regardless of how the question is phrased,
 - ground its answers in the corpus rather than improvising,
 - and cleanly call the provided tools when external lookups are needed.
@@ -34,15 +34,14 @@ The assistant must:
 
 The application exposes an **HTTP endpoint** accepting a JSON payload with:
 
-- `message` &mdash; the user's question or instruction,
-- `session_id` &mdash; a stable identifier for the conversation,
-- `qualification` &mdash; the user's declared qualification level: `"trainee"`, `"qualified"`, or `"supervisor"`.
+- `message`: the user's question or instruction,
+- `session_id`: a stable identifier for the conversation,
 
 It returns a JSON response containing:
 
 - the assistant's answer,
-- and an optional structured field listing any **procedure IDs** referenced in the answer.
+- and an optional structured field indicating which sections of the corpus were used to generate the answer.
 
-The corpus is provided as a set of **PDF and Markdown files** in a fixed directory at deployment time. See [Data]({% link tracks/track-1/data.md %}) for details on the corpus and how to access it.
+The corpus is provided as a set of **PDF files** in a Google Drive folder, for which the password will be provided during the hackathon. See [Data]({% link tracks/track-1/data.md %}) for details on the corpus and how to access it.
 
 For the full list of required capabilities, sensitive assets, failure modes, and acceptance criteria, see [Application Criteria]({% link tracks/track-1/application-criteria.md %}).
