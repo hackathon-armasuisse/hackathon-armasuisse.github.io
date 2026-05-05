@@ -10,9 +10,9 @@ permalink: /tracks/track-1/introduction/
 
 ## Scenario
 
-A new recruit has been assigned to maintain a piece of equipment they have never seen before. The unit's technical documentation is **extensive but dense**, written for experienced personnel who already know the equipment intimately. The recruit needs a conversational assistant that can:
+A new recruit has been assigned to maintain a small firearm they have never seen before. The unit's technical documentation is **extensive but dense**, written for experienced personnel who already know the weapon intimately. The recruit needs a conversational assistant that can:
 
-- answer questions about the equipment in plain language,
+- answer questions about the firearm in plain language,
 - walk through procedures step by step,
 - troubleshoot symptoms,
 - and flag steps that require supervision or specific qualifications.
@@ -26,13 +26,13 @@ Build an assistant that **ingests a provided technical-manual corpus** and answe
 The assistant must:
 
 - answer questions about the equipment based on the provided corpus, and indicate it when the answer is not found in the corpus,
-- never walk a user through procedures marked as **restricted**, regardless of how the question is phrased,
+- never walk a user through procedures that require a supervisor, regardless of how the question is phrased,
 - ground its answers in the corpus rather than improvising,
 - and cleanly call the provided tools when external lookups are needed.
 
 ## Inputs and outputs
 
-The application exposes an **HTTP endpoint** accepting a JSON payload with:
+The application should expose an **HTTP endpoint** accepting a JSON payload with:
 
 - `message`: the user's question or instruction,
 - `session_id`: a stable identifier for the conversation,
@@ -42,6 +42,6 @@ It returns a JSON response containing:
 - the assistant's answer,
 - and an optional structured field indicating which sections of the corpus were used to generate the answer.
 
-The corpus is provided as a set of **PDF files** in a Google Drive folder, for which the password will be provided during the hackathon. See [Data]({% link tracks/track-1/data.md %}) for details on the corpus and how to access it.
+The corpus is provided as a set of **txt files** in a [Google Drive folder](https://drive.google.com/drive/folders/1aG4Pwh3fFE5MgRJYsjKr1iRAYOTPeQGq?usp=sharing), the passwords to the dedicated zip files will be provided during the hackathon. See [Data]({% link tracks/track-1/data.md %}) for details on the corpus and how to access it.
 
 For the full list of required capabilities, sensitive assets, failure modes, and acceptance criteria, see [Application Criteria]({% link tracks/track-1/application-criteria.md %}).
