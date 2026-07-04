@@ -1,4 +1,4 @@
-# Track 4 — Troll/Disinformation Analyst Assistant · Build Brief (Blue Team)
+# Track 4 — Troll/Disinformation Analyst Assistant · (Red Team instructions)
  
 ## Scenario
 A military OSINT unit has been handed a **frozen dump** of social-media posts written by troll/disinformation bots from aregion of interest. Analysts query it
