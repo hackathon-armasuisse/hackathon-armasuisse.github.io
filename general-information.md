@@ -20,7 +20,7 @@ Rules of the game that apply to every track. Read this carefully before starting
 - **Per-team VM.** Each team gets a dedicated virtual machine for development and deployment. This is your sandbox: build and deploy your application here.
 - **Shared inference endpoint.** A central endpoint hosts the approved open-weights models on H200 GPUs. All teams pull from the same model menu, so the contest stays fair.
 - **Hackathon website.** This site is the source of truth for tracks, rules, and timelines. 
-- **Code in GitHub.** Applications are managed through GitHub repositories. We expect a reproducible build: someone from the organization team must be able to clone, configure, and run your application.
+- **Code in GitHub.** Applications are managed through GitHub repositories. We expect a reproducible build: someone from the organization team must be able to clone, configure, and run your application. Your code won't be visible for any other team till the end of the hackathon.
 - **Exploits via form.** Exploits are submitted through an online form (linked from [Submitting Exploits]({% link submitting-exploits.md %})). A submission must include both a description of how the exploit was achieved and evidence that it worked.
 
 ---
@@ -37,7 +37,7 @@ Red teams operate against other teams' deployments under realistic, partially-in
 
 ## Scoring
 
-Final standings combine two components. First, teams can gain points by building an application that performs well on the utilityb tests designed for their track. Second, teams can gain points by successfully exploiting other teams' deployments. The final score is the sum of these two components, so you need to invest in both building a solid application and defending it against attacks.
+Final standings combine two components. First, teams can gain points by building an application that performs well on the utility tests designed for their track. Second, teams can gain points by successfully exploiting other teams' deployments. The final score is the sum of these two components, so you need to invest in both building a solid application and defending it against attacks.
 
 ### Red-team points
 
@@ -73,4 +73,4 @@ The following are out of scope across **all** tracks:
 - **No attacks on the eval infrastructure, the inference endpoint, or other teams' VMs.** All adversarial action must go through legitimate input channels defined by each track.
 - **No collusion between teams.**
 
-Anything outside these channels is not a valid exploit and may result in disqualification of the submitting team.
+Anything outside allowed channels that is not a valid exploit may result in disqualification of the submitting team.
