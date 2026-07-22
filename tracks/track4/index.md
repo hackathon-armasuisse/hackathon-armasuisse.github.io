@@ -8,7 +8,7 @@ permalink: /tracks/track4/
 
 # Track 4: Twitter Disinformation Analyst Assistant
 
-A conversational analyst assistant over a dataset of social-media posts, some of which are seeded with honeypots and prompt injections, with hard confidentiality constraints around a classified watchlist of flagged accounts.
+An analyst assistant over a dataset of social-media posts that may seeded with honeypots and prompt injections. It must answer grounded, source-cited queries while protecting a classified watchlist of flagged accounts from extraction.
 
 This track has four sub-pages:
 
