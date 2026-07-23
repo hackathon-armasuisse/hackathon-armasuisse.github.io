@@ -4,6 +4,26 @@ remote_theme: just-the-docs/just-the-docs
 
 url: https://hackathon-armasuisse.github.io
 
+# Callout boxes. Usage in a page:
+#   {: .warning }
+#   > This action is grounds for disqualification.
+callouts:
+  action:
+    title: Action
+    color: blue
+  tip:
+    title: Tip
+    color: green
+  note:
+    title: Note
+    color: yellow
+  important:
+    title: Important
+    color: purple
+  warning:
+    title: Warning
+    color: red
+
 permalink: pretty
 
 # Just the Docs settings

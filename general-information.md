@@ -10,9 +10,6 @@ permalink: /general-information/
 
 Rules of the game that apply to every track. Read this carefully before starting your build.
 
-{: .highlight }
-> The contest is decided by **scaffolding and defense**, not by raw model power. All teams have access to the same models. What sets you apart is how you wrap them.
-
 ---
 
 ## Infrastructure

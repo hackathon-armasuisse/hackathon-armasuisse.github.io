@@ -2,11 +2,11 @@
 title: Welcome
 layout: home
 nav_order: 1
-description: Welcome to the Armasuisse Hackathon.
+description: Welcome to the armasuisse Hackathon.
 permalink: /
 ---
 
-# Welcome to the Armasuisse Hackathon
+# Welcome to the armasuisse Hackathon
 {: .fs-9 }
 
 A week of building, breaking, and defending LLM applications.
@@ -18,15 +18,13 @@ A week of building, breaking, and defending LLM applications.
 
 You will spend a week designing and shipping a real LLM-powered application against a realistic threat model, then trying to break the applications that other teams build. Every team is both a **blue team** (building and defending its own application) and a **red team** (probing other teams' deployments for exploits).
 
-The contest is deliberately set up so that raw model power is *not* the deciding factor. All teams use the same approved open-weights models on the same shared inference endpoint. What you control is the **scaffolding, the prompting, the tool design, and the guardrails** &mdash; in other words, the things that determine whether an LLM application is safe enough to deploy.
+The contest is deliberately set up so that raw model power is *not* the deciding factor. All teams use the same open-weights models on the same shared inference endpoint. What you control is the **scaffolding, the prompting, the tool design, and the guardrails**. 
 
-The week culminates in a leaderboard that combines:
+At the end of the week, we will score each team based on three criteria:
 
-- successful exploits scored against other teams,
-- defensive resilience against exploits aimed at you,
-- and acceptance-test performance on legitimate user tasks.
-
-The goal is for each team to leave with a concrete, hands-on understanding of where LLM applications are fragile, which mitigations actually work, and which ones look good on paper but fail in adversarial settings.
+- Capability of your application to perform its intended tasks,
+- Defensive resilience against exploits aimed at you,
+- Successful exploitation of other teams' applications.
 
 ---
 
@@ -46,4 +44,4 @@ The goal is for each team to leave with a concrete, hands-on understanding of wh
 
 - Start with [General Information]({% link general-information.md %}) for the rules of the game: infrastructure, scoring, attack submissions, and what is out of scope.
 - Open the page for your assigned **track** (e.g. [Track 1: Documentation Assistant]({% link tracks/track-1/index.md %})) for the scenario, data, application criteria, and submission instructions.
-- Once attacks are open, see [Submitting Exploits]({% link submitting-exploits.md %}) for the form and what we expect in a report.
+- Once attacks are open, see [Submitting Exploits]({% link submitting-exploits.md %}) for the instructions on how to submit your red-team findings.
