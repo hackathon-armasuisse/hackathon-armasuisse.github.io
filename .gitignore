@@ -8,6 +8,10 @@ _site/
 vendor/
 .bundle/
 
+# Secrets (corpus zip password, etc.) — never commit
+.env
+**/.env
+
 # Python venv + caches
 .venv/
 __pycache__/

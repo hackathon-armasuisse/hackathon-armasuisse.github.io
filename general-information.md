@@ -18,7 +18,7 @@ Rules of the game that apply to every track. Read this carefully before starting
 - **Shared inference endpoint.** A central endpoint hosts the approved open-weights models on H200 GPUs. All teams pull from the same model menu, so the contest stays fair. The endpoint is `https://litellm.intlab.ch/v1` and is OpenAI-compatible. Your team receives an API key on Monday morning.
 - **Hackathon website.** This site is the source of truth for tracks, rules, and timelines. 
 - **Code in GitHub.** Applications are managed through GitHub repositories. We expect a reproducible build: someone from the organization team must be able to clone, configure, and run your application. Your code won't be visible for any other team till the end of the hackathon.
-- **Exploits via form.** Exploits are submitted through an online form (linked from [Submitting Exploits]({% link submitting-exploits.md %})). A submission must include both a description of how the exploit was achieved and evidence that it worked.
+- **Exploits via form.** Exploits are submitted through the form `submitting_exploit.docx` in the [Google Drive](https://drive.google.com/drive/folders/1aG4Pwh3fFE5MgRJYsjKr1iRAYOTPeQGq?usp=sharing), which should then be send to alexander.sternfeld@hevs.ch. A submission must include both a description of how the exploit was achieved and evidence that it worked.
 
 ---
 
