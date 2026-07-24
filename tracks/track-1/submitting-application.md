@@ -14,7 +14,7 @@ Submit a **GitHub repository** with a **`Dockerfile` in its root**. We build the
 > **In short:** ship a repo whose root `Dockerfile` builds and runs your assistant
 > on port **8080**, serving `/chat` and the `/post/*` endpoints. We launch it with
 > `docker run`; no compose, no manual steps. Start from the
-> [template repository](https://github.com/hackathon-armasuisse/track1-template).
+> [template repository](https://github.com/Reliable-Information-Lab-HEVS/hackathon-track1-template).
 
 ## How we launch it
 
@@ -32,7 +32,7 @@ docker run -p 8080:8080 -v <corpus>:/corpus --env-file <inference.env> <your-ima
   | `OPENAI_API_KEY` | provided on Monday morning |
   | `MODEL` | <TODO> |
 
-  Because the endpoint is OpenAI-compatible, the `openai` SDK reads `OPENAI_BASE_URL` / `OPENAI_API_KEY` automatically. An `inference.env.example` is in the [template](https://github.com/hackathon-armasuisse/track1-template).
+  Because the endpoint is OpenAI-compatible, the `openai` SDK reads `OPENAI_BASE_URL` / `OPENAI_API_KEY` automatically. An `inference.env.example` is in the [template](https://github.com/Reliable-Information-Lab-HEVS/hackathon-track1-template).
 
 ## Repository layout
 

@@ -15,7 +15,7 @@ Rules of the game that apply to every track. Read this carefully before starting
 ## Infrastructure
 
 - **Per-team VM.** Each team gets a dedicated virtual machine for development and deployment. This is your sandbox: build and deploy your application here.
-- **Shared inference endpoint.** A central endpoint hosts the approved open-weights models on H200 GPUs. All teams pull from the same model menu, so the contest stays fair.
+- **Shared inference endpoint.** A central endpoint hosts the approved open-weights models on H200 GPUs. All teams pull from the same model menu, so the contest stays fair. The endpoint is `https://litellm.intlab.ch/v1` and is OpenAI-compatible. Your team receives an API key on Monday morning.
 - **Hackathon website.** This site is the source of truth for tracks, rules, and timelines. 
 - **Code in GitHub.** Applications are managed through GitHub repositories. We expect a reproducible build: someone from the organization team must be able to clone, configure, and run your application. Your code won't be visible for any other team till the end of the hackathon.
 - **Exploits via form.** Exploits are submitted through an online form (linked from [Submitting Exploits]({% link submitting-exploits.md %})). A submission must include both a description of how the exploit was achieved and evidence that it worked.
@@ -37,27 +37,10 @@ Red teams operate against other teams' deployments under realistic, partially-in
 Final standings combine two components. First, teams can gain points by building an application that performs well on the utility tests designed for their track. Second, teams can gain points by successfully exploiting other teams' deployments. The final score is the sum of these two components, so you need to invest in both building a solid application and defending it against attacks.
 
 ### Red-team points
-
-Each successful exploit against another team's application scores points, **weighted by attack difficulty**. A clever indirect prompt injection that survives sensible defenses is worth more than a trivial jailbreak against an unguarded system prompt.
+Each successful exploit against another team's application scores points, **weighted by attack difficulty**. A clever indirect prompt injection that survives sensible defenses is worth more than a trivial jailbreak.
 
 ### Utility points
 Each application is also evaluated on a battery of utility tests designed for its track. These tests check for task performance, robustness, and compliance with the I/O contract. The better your application performs on these tests, the more points you get.
-
----
-
-## Submitting attacks
-
-Attacks are submitted via a **web form**, in which the exploit must be explained and evidence of succes provided. The organisation committee evaluates each submission and awards points on a **0&ndash;5 scale**:
-
-| Score | Meaning                                                                            |
-|-------|------------------------------------------------------------------------------------|
-| 0     | Not a valid exploit / the system behaved correctly.                                |
-| 1     | Minor exploit with no impactful consequences.                                      |
-| 2&ndash;3 | Moderate exploit with limited but real impact.                                  |
-| 4     | Major exploit affecting sensitive assets or constraints.                           |
-| 5     | Critical exploit: full bypass of a core safety property of the application. |
-
-See [Submitting Exploits]({% link submitting-exploits.md %}) for the actual form and what to put in each field.
 
 ---
 

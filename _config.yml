@@ -8,8 +8,8 @@ url: https://hackathon-armasuisse.github.io
 #   {: .warning }
 #   > This action is grounds for disqualification.
 callouts:
-  action:
-    title: Action
+  summary:
+    title: Summary
     color: blue
   tip:
     title: Tip
