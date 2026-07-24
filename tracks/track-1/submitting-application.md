@@ -8,50 +8,60 @@ permalink: /tracks/track-1/submitting-application/
 
 # Submitting Application
 
-Submit a **GitHub repository** the evaluation team can clone, configure, and run on the team VM.
+Submit a **GitHub repository** with a **`Dockerfile` in its root**. We build the image and launch it with a single command, your app just has to serve the endpoints on the published port.
 
 {: .note }
-> **In short:** hand in a runnable repo (README + entrypoint + pinned deps +
-> config-driven corpus path) at a tagged commit. The eval team must get a running
-> endpoint from your README **without contacting you**.
+> **In short:** ship a repo whose root `Dockerfile` builds and runs your assistant
+> on port **8080**, serving `/chat` and the `/post/*` endpoints. We launch it with
+> `docker run`; no compose, no manual steps. Start from the
+> [template repository](https://github.com/hackathon-armasuisse/track1-template).
+
+## How we launch it
+
+```
+docker run -p 8080:8080 -v <corpus>:/corpus --env-file <inference.env> <your-image>
+```
+
+- Your server listens on **8080** and serves `/chat` and `/post/*`.
+- The **corpus** is mounted at `CORPUS_DIR` (default `/corpus`) — do not bake it into the image.
+- The **inference endpoint** is an OpenAI-compatible LiteLLM proxy. We pass it via `--env-file inference.env` using these **exact** variable names — read them by these names, don't hard-code:
+
+  | Variable | Value |
+  |---|---|
+  | `OPENAI_BASE_URL` | `https://litellm.intlab.ch/v1` |
+  | `OPENAI_API_KEY` | provided on Monday morning |
+  | `MODEL` | <TODO> |
+
+  Because the endpoint is OpenAI-compatible, the `openai` SDK reads `OPENAI_BASE_URL` / `OPENAI_API_KEY` automatically. An `inference.env.example` is in the [template](https://github.com/hackathon-armasuisse/track1-template).
 
 ## Repository layout
 
-No strict structure is imposed, but the repository **must** contain:
-
-- [ ] a top-level **`README.md`**: install deps, configure, start the HTTP server,
-- [ ] a clear **entrypoint** that starts the endpoint from the [I/O contract]({% link tracks/track-1/introduction.md %}#inputs-and-outputs),
-- [ ] config to point the assistant at the corpus directory and the shared inference endpoint,
-- [ ] corpus ingestion / indexing that needs no manual source edits.
+- [ ] a **root `Dockerfile`** that builds and runs your app (start from the template),
+- [ ] a **`README.md`** noting anything non-obvious about your build.
+- [ ] any additional files needed for your build (source code, dependencies, etc.). No manual steps, no private dependencies.
 
 ## Reproducibility requirements
 
-- [ ] pin your dependencies (`requirements.txt`, `pyproject.toml`, lockfile, etc.),
-- [ ] no paths hard-coded to your VM,
-- [ ] read secrets and endpoint URLs from env vars or a documented config file,
-- [ ] the server starts cleanly with the corpus mounted at the harness-specified directory.
+- [ ] the image builds from the repo root with `docker build .`,
+- [ ] pin your dependencies,
+- [ ] read the corpus path, inference URL, and secrets from the environment,
 
 ## What we will do with your submission
 
 On the deploy-and-freeze day:
 
-1. The eval team clones your repository at a specified commit (tagged `v1` by you) onto your team VM.
-2. The corpus is mounted at the documented directory.
-3. Your application is started using the documented entrypoint.
-4. The acceptance-test battery is run against the running endpoint.
-5. The endpoint is exposed to red teams under the rules described in [General Information]({% link general-information.md %}#red-team-visibility).
+1. We clone your repository at the commit you tagged `v1`.
+2. We `docker build` the image.
+3. We `docker run` it with the command above (corpus mounted, inference env set).
+4. The acceptance-test battery is run against `:8080`.
+5. The endpoint is exposed to red teams under the rules in [General Information]({% link general-information.md %}#red-team-visibility).
 
 {: .warning }
-> If your application fails to start or fails the acceptance bar, your effective
+> If the image fails to build or the app fails the acceptance bar, your effective
 > blue-team baseline is reduced. See [scoring]({% link general-information.md %}#scoring).
 
 ## Handing in
 
 {: .action }
-> By the deploy-and-freeze deadline you must provide:
-> - the **GitHub repository URL** for your application,
-> - the **commit SHA or tag** you want evaluated, and
-> - a **one-line description** of the entrypoint command
->   (e.g. `uvicorn app.main:app --host 0.0.0.0 --port 8080`).
+> By the deploy-and-freeze deadline, provide the **GitHub repository URL**, pointing specifically to the commit hash you tagged `v1`. You can submit your submission in this [Google Form](https://forms.gle/ijNGXvWJDfQKQnWPA).
 
-These are submitted via the same web form used for [submitting exploits]({% link submitting-exploits.md %}); the form has a separate "submit application" mode that becomes available once the build phase ends.
