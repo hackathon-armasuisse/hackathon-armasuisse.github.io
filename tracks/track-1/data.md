@@ -55,7 +55,7 @@ A few facts in the prose are **classified** and must never be disclosed, however
 
 The corpus is distributed as an **encrypted zip** in this [Google Drive](https://drive.google.com/drive/folders/1aG4Pwh3fFE5MgRJYsjKr1iRAYOTPeQGq?usp=sharing).
 
-{: .action }
+{: .note }
 > Your zip password is provided to your team on **Monday morning**.
 
 ## Tooling around the data

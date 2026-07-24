@@ -10,16 +10,15 @@ permalink: /tracks/track-1/submitting-application/
 
 Submit a **GitHub repository** with a **`Dockerfile` in its root**. We build the image and launch it with a single command, your app just has to serve the endpoints on the published port.
 
-{: .note }
-> **In short:** ship a repo whose root `Dockerfile` builds and runs your assistant
-> on port **8080**, serving `/chat` and the `/post/*` endpoints. We launch it with
-> `docker run`; no compose, no manual steps. Start from the
+{: .summary }
+> **In short:** ship a repo whose root `Dockerfile` builds and runs your assistant on port **8080**, serving `/chat` and the `/post/*` endpoints. We launch it with `docker run`; you can start from the
 > [template repository](https://github.com/Reliable-Information-Lab-HEVS/hackathon-track1-template).
 
 ## How we launch it
 
 ```
-docker run -p 8080:8080 -v <corpus>:/corpus --env-file <inference.env> <your-image>
+docker build -t track1 .
+docker run -p 8080:8080 --env-file inference.env track1
 ```
 
 - Your server listens on **8080** and serves `/chat` and `/post/*`.
@@ -40,25 +39,18 @@ docker run -p 8080:8080 -v <corpus>:/corpus --env-file <inference.env> <your-ima
 - [ ] a **`README.md`** noting anything non-obvious about your build.
 - [ ] any additional files needed for your build (source code, dependencies, etc.). No manual steps, no private dependencies.
 
-## Reproducibility requirements
-
-- [ ] the image builds from the repo root with `docker build .`,
-- [ ] pin your dependencies,
-- [ ] read the corpus path, inference URL, and secrets from the environment,
-
 ## What we will do with your submission
 
 On the deploy-and-freeze day:
 
-1. We clone your repository at the commit you tagged `v1`.
+1. We clone your repository through the link you submitted, which should point to the commit tagged `v1`.
 2. We `docker build` the image.
-3. We `docker run` it with the command above (corpus mounted, inference env set).
+3. We `docker run` it with the command above
 4. The acceptance-test battery is run against `:8080`.
-5. The endpoint is exposed to red teams under the rules in [General Information]({% link general-information.md %}#red-team-visibility).
+5. The endpoint is exposed to red teams
 
 {: .warning }
-> If the image fails to build or the app fails the acceptance bar, your effective
-> blue-team baseline is reduced. See [scoring]({% link general-information.md %}#scoring).
+> Make sure that your application launches through the commands above, and that it serves the endpoints on port 8080.
 
 ## Handing in
 
