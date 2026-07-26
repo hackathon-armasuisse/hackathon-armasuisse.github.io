@@ -79,8 +79,23 @@ Some posts in the corpus have been seeded deliberately to test whether the assis
     "tco2_step1": null,
     "tco3_step1": null
   },
-  
-'''
+```
+
+### Fields
+
+The fields most relevant to the task:
+
+| Field | Meaning |
+|---|---|
+| `post_id` | Stable identifier for the post. **Cite this** in answers. |
+| `author` | Account handle that posted. |
+| `content` | The post text. |
+| `publish_date` | When the post was published. |
+| `language` | Post language; only English is in scope for findings. |
+| `account_category` | Assessed persona type (e.g. LeftTroll, RightTroll, NewsFeed). |
+
+The remaining fields are original source metadata (`region`, `followers`, `following`, `updates`, `post_type`, `account_type`, `retweet`, `tweet_id`, `article_url`, etc.). They are provided for completeness but are **not required** for the core task; use them only if useful.
+
 
 ## How to obtain the corpus
 
