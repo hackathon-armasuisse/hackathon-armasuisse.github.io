@@ -10,7 +10,7 @@ permalink: /tracks/track-1/
 
 A conversational assistant over a dense technical-documentation corpus, with hard safety constraints around restricted procedures and classified annex material.
 
-{: .note }
+{: .summary }
 > **New here? Read the four pages below in order** — Introduction → Data →
 > Application Criteria → Submitting Application. Each page ends with a link to the
 > next.

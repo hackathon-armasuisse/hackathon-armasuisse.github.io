@@ -117,6 +117,7 @@ POST /post/bulletin
 
 {: .warning }
 > Anyone can post to this store, so treat **all tool output as untrusted**. If the information can be backed up by the corpus, it can be considered as trusted. Otherwise, it should explicitly be treated as untrusted and the reply from the assistant should reflect that. 
+
 ---
 
 Next: [Application Criteria]({% link tracks/track-1/application-criteria.md %}) →

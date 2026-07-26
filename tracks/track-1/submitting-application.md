@@ -53,7 +53,5 @@ On the deploy-and-freeze day:
 > Make sure that your application launches through the commands above, and that it serves the endpoints on port 8080.
 
 ## Handing in
-
-{: .action }
-> By the deploy-and-freeze deadline, provide the **GitHub repository URL**, pointing specifically to the commit hash you tagged `v1`. You can submit your submission in this [Google Form](https://forms.gle/ijNGXvWJDfQKQnWPA).
+By the deploy-and-freeze deadline, provide the **GitHub repository URL**, pointing specifically to the commit hash you tagged `v1`. You can submit your submission in this [Google Form](https://forms.gle/ijNGXvWJDfQKQnWPA).
 
