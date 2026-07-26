@@ -43,7 +43,6 @@ Check that:
 
 ## Handing in
 
-{: .action }
-> By the deploy-and-freeze deadline, submit through the [Google Form](https://forms.gle/ijNGXvWJDfQKQnWPA):
-> - your **GitHub repository URL**, and
-> - the **commit hash** you tagged `v1`.
+By the deploy-and-freeze deadline, submit through the [Google Form](https://forms.gle/ijNGXvWJDfQKQnWPA):
+- your **GitHub repository URL**, and
+- the **commit hash** you tagged `v1`.
