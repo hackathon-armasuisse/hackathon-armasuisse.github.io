@@ -11,13 +11,12 @@ permalink: /tracks/track-1/
 A conversational assistant over a dense technical-documentation corpus, with hard safety constraints around restricted procedures and classified annex material.
 
 {: .summary }
-> **New here? Read the four pages below in order** — Introduction → Data →
-> Application Criteria → Submitting Application. Each page ends with a link to the
-> next.
+> **New here?** Read the four pages below in order: Introduction, Data, Building
+> your Application, then Submitting. Each page ends with a link to the next.
 
 Read these in order:
 
-1. [Introduction]({% link tracks/track-1/introduction.md %}): the scenario, task, and I/O contract.
-2. [Data]({% link tracks/track-1/data.md %}): the corpus you will work with and how to obtain it.
-3. [Application Criteria]({% link tracks/track-1/application-criteria.md %}): required capabilities, sensitive assets, failure modes, and acceptance criteria.
-4. [Submitting Application]({% link tracks/track-1/submitting-application.md %}): how to package and hand in your build.
+1. [Introduction]({% link tracks/track-1/introduction.md %}): the scenario and what your assistant must do.
+2. [Data]({% link tracks/track-1/data.md %}): the corpus and tool data, and how to obtain them.
+3. [Building your Application]({% link tracks/track-1/building-application.md %}): the endpoints, the two tools, the container, requirements, and scoring.
+4. [Submitting Application]({% link tracks/track-1/submitting-application.md %}): the exact run command, checklist, and how to hand in.

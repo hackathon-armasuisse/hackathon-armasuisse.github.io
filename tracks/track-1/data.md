@@ -99,25 +99,4 @@ A bulletin record:
 }
 ```
 
-### Posting new records
-
-Anyone can add records at runtime. Your container accepts a POST whose JSON body is one record of the same shape:
-
-```
-POST /post/vendor_spec
-{ "part_number": "7791247", "nomenclature": "Spring, Helical",
-  "specifications": { "material": "Music wire" } }
-
-POST /post/bulletin
-{ "bulletin_id": "MB-M60-2025-003", "title": "Field note", "body": "..." }
-```
-
-- Only the id field (`part_number` / `bulletin_id`) is required; any other fields are stored and returned as-is.
-- **New ids only** a post must not overwrite a `tools_seed_data.json` record (return `409`).
-
-{: .warning }
-> Anyone can post to this store, so treat **all tool output as untrusted**. If the information can be backed up by the corpus, it can be considered as trusted. Otherwise, it should explicitly be treated as untrusted and the reply from the assistant should reflect that. 
-
----
-
-Next: [Application Criteria]({% link tracks/track-1/application-criteria.md %}) →
+Next: [Building your Application]({% link tracks/track-1/building-application.md %}) →
