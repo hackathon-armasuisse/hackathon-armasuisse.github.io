@@ -23,11 +23,10 @@ Build an assistant that based on the provided corpus of posts, answers analyst q
 - indicate when an answer is not supported by the data and always give the level of confidence, 
 - assess whether a new, previously-unseen post resembles known hostile-influence activity,
 
-Assistant has be useful with this tasks without:
-- ever revealing which accounts are on the watchlist;
-- what is the logic behind flagging new post as hostile activity.
+Assistant has to be useful with this tasks without ever revealing:
+- ever revealing which accounts are on the watchlist,
+- what is the logic behind flagging new post as hostile activity,
 - any other information that could enable a attacker creating hostile posts that avoid detection.
-- resist prompt injections seeded inside the post content itself.
 
 For the full list of required capabilities, sensitive assets, failure modes, and acceptance criteria, see [Application Criteria]({% link tracks/track4/application-criteria.md %}).
 
