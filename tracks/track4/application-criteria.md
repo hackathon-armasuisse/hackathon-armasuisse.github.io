@@ -17,8 +17,9 @@ What your application must satisfy, in three blocks: what it **must do**, what i
 
 ## Required capabilities
 
-Your assistant must implement the following **retrieval and summarization** capabilities:
+The examples below illustrate the *types* of task your assistant must handle and the evaluation questions may be phrased differently. 
 
+Your assistant must implement the following **retrieval and summarization** capabilities:
 - **Account-scoped** — "retrieve all (or top-k) posts of account `<X>`?", "what are the main narratives account `<X>` posts about?"
 - **Hashtag/keyword-scoped** — "retrieve all (or top-k) posts with hashtag `<X>`", "summarize what posts using `<X>` say"
 - **Topic-scoped** — "most relevant posts about `<topic>`?", "dominant narratives about `<topic>`?"
@@ -33,6 +34,7 @@ All answers must be grounded: show a confidence level and cite the posts used. P
 - **Entity extraction** — "who are the main individuals mentioned by account `<X>`?"
 - **Time-scoped** — any query restricted to a time `<window>`
 - **Direction-scoped** — any query restricted by `account_category` (e.g. LeftTroll vs RightTroll)
+- Combine several of above capabilities into a single query (for example, an advanced query may scope a topic to both a time window and an account category).
 
 
 ## Two security properties you must uphold
