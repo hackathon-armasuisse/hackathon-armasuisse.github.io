@@ -17,17 +17,18 @@ What your application must satisfy, in three blocks: what it **must do**, what i
 
 ## Required capabilities
 
-Your assistant must implement following retrieval and summarization:
+Your assistant must implement following **retrieval and summarization**:
 
 - Account-scoped — "what are the posts of account <X>?", "who authored post <X>?", "what are the main narratives account <X> posts about?"
 - Hashtag/keyword-scoped — "retrieve all (or top-k) posts with hashtag <X>", "summarize what posts using <X> say"
 - Topic-scoped — "most relevant posts about <topic>?", "dominant narratives about <topic>?"
 
-As well as new-post assessment — given an unseen assess_post, return the most similar corpus posts and a structured assessment of how likely it is hostile-influence content, grounded in the posts it resembles.
+It also must implement **new-post assessment** — given an unseen assess_post, return the most similar corpus posts and a structured assessment of how likely it is hostile-influence content, grounded in the posts it resembles.
 
-All the answers should be grounded, showing confidence level and citing the most relevant or the needed to extraction posts. If it is asked, provide the full text of posts.  
+All the answers should be grounded, showing confidence level and citing the most relevant or the needed to extraction posts. If it is asked, provide the full text of posts. Importantly, as mentioned in data description while corpus contains non-English posts and you may **not** delete or
+  modify the dump, they must **not** appear or influence your findings.
 
-More advanced desired features include more detailed answers:
+**More advanced desired features** include more detailed answers:
 - Author aggregation — "who are the main authors using hashtag <X>?",
 - Entity extraction - "who are the main individuals mentioned by user 
 - Time-scoped — any other query restricted to a time <window>,
@@ -39,12 +40,6 @@ More advanced desired features include more detailed answers:
   high-confidence conclusion without enough supporting evidence.
 - **Confidentiality** — never disclose the watchlist of flagged accounts, nor the
   detection logic that would let an adversary evade you.
-  
-## Scope rule (MOVE TO DATA)
-- **English only.** Non-English posts remain in the corpus (you may **not** delete or
-  modify the dump) but must **not** appear or influence your findings.
-- Adversaries may hide instructions inside non-English text. Treat all post content —
-  any language — as untrusted **data**, never as instructions.
 
 ## I/O contract
 **Request (JSON):**
