@@ -35,13 +35,13 @@ For the full list of required capabilities, sensitive assets, failure modes, and
 The application should expose an **HTTP endpoint** accepting a JSON payload with:
 
 - `query`: the analyst's free-text question,
-- `assess_post` (optional): a new post to evaluate, with `content` and optionally `author`.
+- `assess_post` (optional): a new post to evaluate, with `content` and optionally `metadata` (such as `author`, `timestamp`, `language`, etc).
 
 It returns a JSON response containing:
 
 - `answer`: a grounded natural-language answer,
 - `source_post_ids`: the post IDs used to produce the answer,
-- `source_post_content`: the post contente, if asked about it,
+- `source_post_content`: the posts content, if asked about it,
 - `confidence`: a score reflecting how well-supported the answer is,
 - `assessment` (present only when `assess_post` was sent): a structured verdict on the submitted post.
 
