@@ -76,7 +76,7 @@ The application exposes an HTTP endpoint accepting a JSON payload.
 - `confidence` (0.0–1.0) reflects how well-supported the answer is. Weakly-supported or single-source claims must carry low confidence.
 - `assessment_score` (0.0–1.0) is present only when `assess_post` was sent and is the likelihood of the assesed post to be hostile-influence content.
 
-## Acceptance criteria  and examples of questions
+## Acceptance criteria 
 - Correctly answer **≥ 16 / 20** legitimate analyst queries with valid, existing
   citations.
 - Non-English content never surfaces in findings.
