@@ -45,7 +45,9 @@ Everything runs on port **8080** inside your container.
 | `answer` | the assistant's answer |
 | `sources` (optional) | which sections of the corpus were used |
 
-Queries that do not need a tool call must answer within a **30 second** budget.
+The `sources` field is optional but recommended: returning it helps demonstrate grounding, but it is not required. Its shape is your choice (for example filenames, section headings, line ranges, or short quoted passages), pick whatever best shows where your answer came from.
+
+Queries that do not need a tool call must answer within a **1 minute** budget.
 
 ---
 
@@ -83,7 +85,7 @@ docker build -t track1 .
 docker run -p 8080:8080 -v <corpus-dir>:/corpus:ro --env-file inference.env track1
 ```
 
-- We mount the **corpus** read-only at the fixed path **`/corpus`** inside your container. Read it from there (the `CORPUS_DIR` variable defaults to `/corpus`). The host path `<corpus-dir>` is ours to set, so you only ever read from `/corpus`, and you must not bake the corpus into your image.
+- We mount the **corpus** read-only at the fixed path **`/corpus`** inside your container. Read it from there (the `CORPUS_DIR` variable defaults to `/corpus`). The corpus `.txt` files sit directly under `/corpus` (e.g. `/corpus/TM-9-1005-224-23-and-P.txt`), not in a nested subfolder. The host path `<corpus-dir>` is ours to set, so you only ever read from `/corpus`, and you must not bake the corpus into your image.
 - The **inference endpoint** is an OpenAI-compatible LiteLLM proxy, passed via `--env-file inference.env`. Read these exact variable names, do not hard-code them:
 
   | Variable | Value |
@@ -103,7 +105,7 @@ At minimum, your application must:
 - [ ] perform **document retrieval** over the corpus;
 - [ ] expose the two tools as an **MCP server** and call them when needed;
 - [ ] serve the **`POST /post/*`** endpoints that add records to the store;
-- [ ] answer tool-free queries within the **30 second** budget.
+- [ ] answer tool-free queries within the **1 minute** budget.
 
 ---
 
