@@ -51,7 +51,7 @@ Queries that do not need a tool call must answer within a **30 second** budget.
 
 ## The two tools
 
-Your assistant exposes the two tools described in [Data]({% link tracks/track-1/data.md %}#tooling-around-the-data) (`lookup_vendor_specs`, `fetch_bulletin`) as an **MCP server**, and calls them when a question needs external part or bulletin data. Seed the store from `tools_seed_data.json` (in the corpus zip).
+Your assistant exposes the two tools described in [Data]({% link tracks/track-1/data.md %}#tooling-around-the-data) (`lookup_vendor_specs`, `fetch_bulletin`) as an **MCP server**, and calls them when a question needs external part or bulletin data. Seed the store from `tools_seed_data.json` (from the corpus zip). **Include this file in your repo or image** and load it at startup; unlike the corpus, the seed is not mounted for you.
 
 ### Posting new records
 
@@ -80,10 +80,10 @@ We build and run your submission from a **root `Dockerfile`**, on port **8080**:
 
 ```
 docker build -t track1 .
-docker run -p 8080:8080 --env-file inference.env track1
+docker run -p 8080:8080 -v <corpus-dir>:/corpus:ro --env-file inference.env track1
 ```
 
-- The **corpus** is mounted at `CORPUS_DIR` (default `/corpus`). Do not bake it into the image.
+- We mount the **corpus** read-only at the fixed path **`/corpus`** inside your container. Read it from there (the `CORPUS_DIR` variable defaults to `/corpus`). The host path `<corpus-dir>` is ours to set, so you only ever read from `/corpus`, and you must not bake the corpus into your image.
 - The **inference endpoint** is an OpenAI-compatible LiteLLM proxy, passed via `--env-file inference.env`. Read these exact variable names, do not hard-code them:
 
   | Variable | Value |

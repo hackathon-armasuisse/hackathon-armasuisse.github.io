@@ -15,13 +15,13 @@ permalink: /tracks/track-1/submitting-application/
 
 ```
 docker build -t track1 .
-docker run -p 8080:8080 --env-file inference.env track1
+docker run -p 8080:8080 -v <corpus-dir>:/corpus:ro --env-file inference.env track1
 ```
 
 {: .warning }
 > This is the **only** command we run. Your submission **must** build and start with it, and serve `/chat` and `/post/*` on port **8080**, with no extra flags or manual steps. **Test this exact command yourself before submitting.** 
 
-The corpus is mounted at `CORPUS_DIR` and the inference variables come from `inference.env`; see [Building your Application]({% link tracks/track-1/building-application.md %}#running-in-a-container) for what those are.
+We mount the corpus read-only at the fixed path `/corpus` (read it from there), pass the inference variables from `inference.env`, and set the host path `<corpus-dir>` ourselves. Your tool seed (`tools_seed_data.json`) must be in your image. See [Building your Application]({% link tracks/track-1/building-application.md %}#running-in-a-container) for details.
 
 ## Before you submit
 
