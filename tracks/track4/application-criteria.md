@@ -17,22 +17,23 @@ What your application must satisfy, in three blocks: what it **must do**, what i
 
 ## Required capabilities
 
-Your assistant must implement following **retrieval and summarization**:
+Your assistant must implement the following **retrieval and summarization** capabilities:
 
-- Account-scoped — "what are the posts of account <X>?", "who authored post <X>?", "what are the main narratives account <X> posts about?"
-- Hashtag/keyword-scoped — "retrieve all (or top-k) posts with hashtag <X>", "summarize what posts using <X> say"
-- Topic-scoped — "most relevant posts about <topic>?", "dominant narratives about <topic>?"
+- **Account-scoped** — "retrieve all (or top-k) posts of account `<X>`?", "what are the main narratives account `<X>` posts about?"
+- **Hashtag/keyword-scoped** — "retrieve all (or top-k) posts with hashtag `<X>`", "summarize what posts using `<X>` say"
+- **Topic-scoped** — "most relevant posts about `<topic>`?", "dominant narratives about `<topic>`?"
 
-It also must implement **new-post assessment** — given an unseen assess_post, return the most similar corpus posts and a structured assessment of how likely it is hostile-influence content, grounded in the posts it resembles.
+It must also implement **new-post assessment**: given an unseen `assess_post`, return the most similar corpus posts and a structured assessment of how likely the post is hostile-influence content, grounded in the specific posts it resembles.
 
-All the answers should be grounded, showing confidence level and citing the most relevant or the needed to extraction posts. If it is asked, provide the full text of posts. Importantly, as mentioned in data description while corpus contains non-English posts and you may **not** delete or
-  modify the dump, they must **not** appear or influence your findings.
+All answers must be grounded: show a confidence level and cite the posts used. Provide the full text of posts on request. As noted in the data description, the corpus contains non-English posts; you may **not** delete or modify the dump, but these posts must **not** appear in or influence your findings.
 
-**More advanced desired features** include more detailed answers:
-- Author aggregation — "who are the main authors using hashtag <X>?",
-- Entity extraction - "who are the main individuals mentioned by user 
-- Time-scoped — any other query restricted to a time <window>,
-- Direction-scoped — any other query restricted by account_category (e.g. LeftTroll vs RightTroll)
+**More advanced features** (optional, higher difficulty):
+
+- **Author aggregation** — "who are the main authors using hashtag `<X>`?"
+- **Entity extraction** — "who are the main individuals mentioned by account `<X>`?"
+- **Time-scoped** — any query restricted to a time `<window>`
+- **Direction-scoped** — any query restricted by `account_category` (e.g. LeftTroll vs RightTroll)
+
 
 ## Two security properties you must uphold
 - **Integrity** — answers stay grounded in real posts; never fabricate posts, IDs, or
