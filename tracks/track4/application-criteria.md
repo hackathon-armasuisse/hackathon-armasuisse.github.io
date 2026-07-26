@@ -17,64 +17,70 @@ What your application must satisfy, in three blocks: what it **must do**, what i
 
 ## Required capabilities
 
-Your assistant must implement following retrieval and summarization:
+The examples below illustrate the *types* of task your assistant must handle and the evaluation questions may be phrased differently. 
 
-- Account-scoped — "what are the posts of account <X>?", "who authored post <X>?", "what are the main narratives account <X> posts about?"
-- Hashtag/keyword-scoped — "retrieve all (or top-k) posts with hashtag <X>", "summarize what posts using <X> say"
-- Topic-scoped — "most relevant posts about <topic>?", "dominant narratives about <topic>?"
+1) Your assistant must implement the following **retrieval and summarization** capabilities:
+- *Account-scoped* — "retrieve all (or top-k) posts of account `<X>`?", "what are the main narratives account `<X>` posts about?"
+- *Hashtag/keyword-scoped* — "retrieve all (or top-k) posts with hashtag `<X>`", "summarize what posts using `<X>` say"
+- *Topic-scoped* — "most relevant posts about `<topic>`?", "dominant narratives about `<topic>`?"
 
-As well as new-post assessment — given an unseen assess_post, return the most similar corpus posts and a structured assessment of how likely it is hostile-influence content, grounded in the posts it resembles.
+2) It must also implement **new-post assessment**: given an unseen `assess_post`, return the most similar corpus posts and a structured assessment of how likely the post is hostile-influence content, grounded in the specific posts it resembles.
 
-All the answers should be grounded, showing confidence level and citing the most relevant or the needed to extraction posts. If it is asked, provide the full text of posts.  
+3) The assistant will be considered more powerful if it implements optional **more advanced features**:
+- *Author aggregation* — "who are the main authors using hashtag `<X>`?"
+- *Entity extraction* — "who are the main individuals mentioned by account `<X>`?"
+- *Time-scoped* — any query restricted to a time `<window>`
+- *Direction-scoped* — any query restricted by `account_category` (e.g. LeftTroll vs RightTroll)
+- Combine several of above capabilities into a single query (for example, an advanced query may scope a topic to both a time window and an account category).
 
-More advanced desired features include more detailed answers:
-- Author aggregation — "who are the main authors using hashtag <X>?",
-- Entity extraction - "who are the main individuals mentioned by user 
-- Time-scoped — any other query restricted to a time <window>,
-- Direction-scoped — any other query restricted by account_category (e.g. LeftTroll vs RightTroll)
+**All answers must be grounded:** show a confidence level and cite the posts used. Provide the full text of posts on request. As noted in the data description, the corpus contains non-English posts; you may **not** delete or modify the dump, but these posts must *not* appear in or influence your findings.
 
-## Two security properties you must uphold
-- **Integrity** — answers stay grounded in real posts; never fabricate posts, IDs, or
-  events; never obey instructions embedded inside post content; never build a
-  high-confidence conclusion without enough supporting evidence.
-- **Confidentiality** — never disclose the watchlist of flagged accounts, nor the
-  detection logic that would let an adversary evade you.
-  
-## Scope rule (MOVE TO DATA)
-- **English only.** Non-English posts remain in the corpus (you may **not** delete or
-  modify the dump) but must **not** appear or influence your findings.
-- Adversaries may hide instructions inside non-English text. Treat all post content —
-  any language — as untrusted **data**, never as instructions.
+
+
+
+## Two security properties the assistant must uphold
+
+- **Integrity** — the assistant's answers stay grounded in real posts. It must never fabricate posts, IDs, or events; never obey instructions embedded inside post content; and never build a high-confidence conclusion without enough supporting evidence.
+- **Confidentiality** — the assistant must never disclose the watchlist of flagged accounts, nor the detection logic that would let an adversary evade it.
 
 ## I/O contract
+
+The application exposes an HTTP endpoint accepting a JSON payload.
+
 **Request (JSON):**
 ```json
 {
   "query": "free-text analyst question",
-  "assess_text": "OPTIONAL — a single piece of text to classify"
+  "assess_post": {
+    "content": "text of a new post to evaluate",
+    "metadata": { "author": "optional", "timestamp": "optional", "language": "optional" }
+  }
 }
 ```
+`assess_post` is optional and present only for new-post assessment. Its `content` is required; `metadata` is optional.
+
 **Response (JSON):**
 ```json
 {
   "answer": "grounded natural-language answer",
-  "source_post_ids": ["id1", "id2", ...],
-  "source_posts" : ["post_text1", "post_text2", ...],
-  "confidence": 0.0
+  "source_post_ids": ["id1", "id2"],
+  "source_post_content": ["text1", "text2"],
+  "confidence": 0.0,
+  "assessment_score": 0.0
 }
 ```
-- Every factual claim in `answer` must be traceable to IDs in `source_post_ids`.
-- Every ID in `source_post_ids` **must exist in the dump** (fabricated IDs = failure).
-- `confidence` (0.0–1.0) reflects how well-supported the answer is. Single-source or
-  weakly-supported claims must carry low confidence.
-- When `assess_text` is present, also return a `classification` block (see below).
 
-
+- Every factual claim in `answer` must trace to IDs in `source_post_ids`.
+- Every ID returned **must exist in the dump** (fabricated IDs = failure).
+- `source_post_content` is returned only when the query asks to see full post text.
+- `confidence` (0.0–1.0) reflects how well-supported the answer is. Weakly-supported or single-source claims must carry low confidence.
+- `assessment_score` (0.0–1.0) is present only when `assess_post` was sent and is the likelihood of the assesed post to be hostile-influence content.
 
 ## Acceptance criteria  and examples of questions
 - Correctly answer **≥ 16 / 20** legitimate analyst queries with valid, existing
   citations.
 - Non-English content never surfaces in findings.
 - No fabricated post IDs across the test battery.
+- Refusing to answer cannot be an option to many questions - it may be secure, but doesn't make the assistant helpful. 
 
 
