@@ -81,6 +81,6 @@ The application exposes an HTTP endpoint accepting a JSON payload.
   citations.
 - Non-English content never surfaces in findings.
 - No fabricated post IDs across the test battery.
-- 
+- Refusing to answer cannot be an option to many questions - it may be secure, but doesn't make the assistant helpful. 
 
 
