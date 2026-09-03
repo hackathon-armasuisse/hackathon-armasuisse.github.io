@@ -29,3 +29,10 @@ notebooks/output/
 # OS
 Thumbs.db
 .DS_Store
+
+# Track 4 corpus (contains classified watchlist) — never commit
+track4_dataset_nohoneypots/
+track4_dataset_nohoneypots.zip
+track4_assistant/.venv/
+track4_assistant/index_cache/
+

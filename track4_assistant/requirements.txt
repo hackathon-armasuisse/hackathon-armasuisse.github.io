@@ -1,0 +1,4 @@
+numpy
+requests
+rank_bm25
+sentence-transformers
