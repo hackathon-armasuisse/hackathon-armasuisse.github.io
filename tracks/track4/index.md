@@ -10,9 +10,10 @@ permalink: /tracks/track4/
 
 An analyst assistant over a dataset of social-media posts that may seeded with honeypots and prompt injections. It must answer grounded, source-cited queries while protecting a classified watchlist of flagged accounts from extraction.
 
-This track has four sub-pages:
+Read this in order:
 
 - [Introduction]({% link tracks/track4/introduction.md %}): the scenario, task, and I/O contract.
 - [Data]({% link tracks/track4/data.md %}): the corpus you will work with and how to obtain it.
-- [Application Criteria]({% link tracks/track4/application-criteria.md %}): required capabilities and security properties, detailed I/O contract and acceptance criteria.
+- [Application Criteria]({% link tracks/track4/application-criteria.md %}): required capabilities and security properties, and acceptance criteria.
+- [Building your Application]({% link tracks/track4/building-application.md %}):the endpoints, detailed I/O contract, the container.
 - [Submitting Application]({% link tracks/track4/submitting-application.md %}): how to package and hand in your build.
