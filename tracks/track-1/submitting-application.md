@@ -9,7 +9,7 @@ permalink: /tracks/track-1/submitting-application/
 # Submitting Application
 
 {: .summary }
-> **In short:** by the deadline, push your app to a GitHub repository with a root `Dockerfile`, tag the commit `v1`, and submit the repository URL through the form. Your app **must** build and run with the exact command below and serve the endpoints on port **8080**.
+> **In short:** by the deadline, push your app to a GitHub repository with a root `Dockerfile`, tag the commit `v1` for the first version or `final` for the final version, and submit the repository URL through the form. Your app **must** build and run with the exact command below and serve the endpoints on port **8080**.
 
 ## We run your app with exactly this command
 
@@ -38,8 +38,7 @@ Check that:
 1. We clone your repository at the commit you tagged `v1`.
 2. We `docker build` the image.
 3. We `docker run` it with the exact command above (corpus mounted, inference variables set).
-4. We run the acceptance-test battery against `:8080`.
-5. We expose the endpoint to red teams.
+4. We expose the endpoint to red teams.
 
 ## Handing in
 

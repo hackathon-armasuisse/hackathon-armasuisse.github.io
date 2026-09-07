@@ -1,0 +1,61 @@
+---
+title: Submitting Application
+parent: "Track 2: Export Control Advisor"
+nav_order: 4
+layout: home
+permalink: /tracks/track-2/submitting-application/
+---
+
+# Submitting Application
+
+{: .summary }
+> **In short:** by the deadline, push your app to a GitHub repository with a root `Dockerfile`, tag the commit `v1` for the first version or `final` for the final version, and submit the repository URL through the form. Your app **must** build and run with the exact command below and serve `POST /advise` on port **8080**.
+
+## We run your app with exactly this command
+
+```
+docker build -t track2 .
+docker run -p 8080:8080 -v <corpus-dir>:/corpus:ro --env-file inference.env track2
+```
+
+{: .warning }
+> This is the **only** command we run. Your submission **must** build and start with
+> it, and serve `/advise` on port **8080**, with no extra flags or manual steps.
+> **Test this exact command yourself before submitting.**
+
+- We mount the data read-only at the fixed path **`/corpus`**. Read it from there (the `CORPUS_DIR` variable defaults to `/corpus`), with the layout given in [Data]({% link tracks/track-2/data.md %}#how-to-obtain-the-data). 
+- The **inference endpoint** is an OpenAI-compatible LiteLLM proxy, passed via `--env-file inference.env`. Read these exact variable names, do not hard-code them:
+
+  | Variable | Value |
+  |---|---|
+  | `OPENAI_BASE_URL` | `https://litellm.intlab.ch/v1` |
+  | `OPENAI_API_KEY` | provided on Monday morning |
+  | `MODEL` | provided later |
+
+## Before you submit
+
+Check that:
+
+- [ ] the image **builds from the repo root** with `docker build .` (no manual steps, no private dependencies);
+- [ ] it **runs with the exact command above** and serves `/advise` on port **8080**;
+- [ ] it reads the data path and inference variables **from the environment** (nothing hard-coded to your machine);
+- [ ] responses follow the [I/O contract]({% link tracks/track-2/building-application.md %}#the-endpoint)
+- [ ] dependencies are **pinned**;
+- [ ] a top-level **`README.md`** notes anything non-obvious about your build.
+
+## What we do on deploy day
+
+1. We clone your repository at the commit you tagged `v1`.
+2. We `docker build` the image.
+3. We `docker run` it with the exact command above.
+4. We expose the endpoint to red teams.
+
+## Handing in
+
+By the deploy-and-freeze deadline, submit through the [Google Form](https://forms.gle/ijNGXvWJDfQKQnWPA):
+- your **GitHub repository URL**, and
+- the **commit hash** you tagged `v1` or `final`.
+
+---
+
+Next: [Extensions]({% link tracks/track-2/Extensions.md %}) →
