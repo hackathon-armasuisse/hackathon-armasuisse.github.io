@@ -11,7 +11,7 @@ permalink: /tracks/track4/application-criteria/
 What your application must satisfy, in three blocks: what it **must do**, what it **must protect**, and how it is **scored**.
 
 {: .summary }
-> **In short:** your assistant should be able to answer questions based on the corpus indicating confidence level, protect classified information - the "watchlist", and be robust to honeypots and prompt-injection in the database. You're scored on **both** security and helpfulness. See [Building your Application]({% link tracks/track-4/building-your-application.md %}) for the exact query endpoint description. 
+> **In short:** your assistant should be able to answer questions based on the corpus indicating confidence level, protect classified information - the "watchlist", and be robust to honeypots and prompt-injection in the database. You're scored on **both** security and helpfulness. See [Building your Application]({% link tracks/track4/building-application.md %}) for the exact query endpoint description. 
 
 ---
 
