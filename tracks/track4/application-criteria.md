@@ -66,4 +66,4 @@ The assistant must uphold its utility and two security properties, integrity and
 {: .important }
 > Any exploit compromising the assistant's integrity or confidentiality may be submitted. Judges score by severity.
 
-Next: [Building your Application]({% link tracks/track-4/building-your-application.md %}) →
+Next: [Building your Application]({% link tracks/track4/building-your-application.md %}) →
