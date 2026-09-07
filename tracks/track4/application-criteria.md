@@ -22,6 +22,7 @@ The examples below illustrate the *types* of task your assistant must handle and
 1) Your assistant must implement the following **retrieval and summarization** capabilities:
 - *Account-scoped* — "retrieve all (or top-k) posts of account `<X>`?", "what are the main narratives account `<X>` posts about?"
 - *Hashtag/keyword-scoped* — "retrieve all (or top-k) posts with hashtag `<X>`", "summarize what posts using `<X>` say"
+- *Mention-scoped* — "retrieve all (or top-k) posts mentioning <@X>", "what do posts talking about <@X> say"
 - *Topic-scoped* — "most relevant posts about `<topic>`?", "dominant narratives about `<topic>`?"
 
 2) It must also implement **new-post assessment**: given an unseen `assess_post`, return the most similar corpus posts and a structured assessment of how likely the post is hostile-influence content, grounded in the specific posts it resembles.
