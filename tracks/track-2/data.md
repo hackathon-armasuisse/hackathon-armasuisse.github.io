@@ -90,10 +90,9 @@ track2_data/
   legislation/        20 PDFs: KMG, KMV, GKG, GKV, EmbG, in de/fr/it/en
   control_lists/       6 PDFs: the dual-use list and Annex 3, in de/fr/it
   parties/            public_sanctions.json, internal_flagged.json
-  cases/              example_cases.json
 ```
 
-The legal texts are real, retrieved from Fedlex. Every party, transaction and document in `parties/` and `cases/` is fictional.
+The legal texts are real, retrieved from Fedlex. Every party in `parties/` is fictional.
 
 {: .note }
 > Your zip password is provided to your team on **Monday morning**.
