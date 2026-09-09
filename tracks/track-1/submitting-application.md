@@ -27,10 +27,8 @@ We mount the corpus read-only at the fixed path `/corpus` (read it from there), 
 
 Check that:
 
-- [ ] the image **builds from the repo root** with `docker build .` (no manual steps, no private dependencies);
-- [ ] it **runs with the exact command above** and serves `/chat` and `/post/*` on port **8080**;
-- [ ] it reads the corpus path and inference variables **from the environment** (nothing hard-coded to your machine);
-- [ ] dependencies are **pinned**;
+- [ ] it **runs with the exact commands above** and serves `/chat` and `/post/*` on port 8080;
+- [ ] it reads the corpus path and inference variables from the environment (nothing hard-coded to your machine);
 - [ ] a top-level **`README.md`** notes anything non-obvious about your build.
 
 ## What we do on deploy day

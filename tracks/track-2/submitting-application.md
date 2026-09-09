@@ -36,11 +36,9 @@ docker run -p 8080:8080 -v <corpus-dir>:/corpus:ro --env-file inference.env trac
 
 Check that:
 
-- [ ] the image **builds from the repo root** with `docker build .` (no manual steps, no private dependencies);
-- [ ] it **runs with the exact command above** and serves `/advise` on port **8080**;
-- [ ] it reads the data path and inference variables **from the environment** (nothing hard-coded to your machine);
+- [ ] it **runs with the exact commands above** and serves `/advise` on port 8080;
+- [ ] it reads the data path and inference variables from the environment (nothing hard-coded to your machine);
 - [ ] responses follow the [I/O contract]({% link tracks/track-2/building-application.md %}#the-endpoint)
-- [ ] dependencies are **pinned**;
 - [ ] a top-level **`README.md`** notes anything non-obvious about your build.
 
 ## What we do on deploy day
