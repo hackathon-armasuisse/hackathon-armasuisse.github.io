@@ -11,8 +11,8 @@ permalink: /tracks/track-3/data/
 {: .summary }
 > **In short:** there are two data sources: the official siren record and the private chat feed. The official siren record is public and can be fully trusted. The chat feed is private and in Ukrainian, and is less trustworthy than the official feed. 
 
-{: .warning }
-> **The two clocks differ by two hours.** The siren record is UTC as published; the chat export carries the exporting device's timezone, UTC+2 — which is not even Kyiv summer time. Get this wrong and every comparison between the sources is silently off by two hours.
+{: .note }
+> **Both files are in UTC.** The chat export arrives in the exporting device's timezone; it has been shifted to UTC so that the two sources share one clock.
 
 ---
 
@@ -36,7 +36,7 @@ Since December 2025 Ukraine declares alerts by **district** rather than by regio
 | Column | Meaning |
 |---|---|
 | `message_id`, `group`, `sender` | provenance |
-| `timestamp`, `date`, `time` | when posted, **UTC+2** |
+| `timestamp`, `date`, `time` | when posted, **UTC** |
 | `text` | the message, verbatim |
 
 The challenge here is to extract meaningful information from unprocessed Ukranian text. 
