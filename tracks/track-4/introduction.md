@@ -47,5 +47,5 @@ It returns a JSON response containing:
 
 
 
-Next: [Data]({% link tracks/track-4/data.md %})  →
+Next: [Data]({% link tracks/track-4/data/ %})  →
 
