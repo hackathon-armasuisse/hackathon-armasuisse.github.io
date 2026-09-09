@@ -12,7 +12,7 @@ permalink: /tracks/track-4/introduction/
 
 A military OSINT unit has been handed a frozen dump of Twitter posts sent from handles connected to the Internet Research Agency, a massive Russian "troll factory". A curated subset of the posts' authors (we call it "watchlist") have been assessed as running coordinated influence activity. The rest of the corpus is ordinary noise, and a number of posts have been seeded as honeypots or prompt injections to test whether an automated analyst can be misled.
 
-The corpus is provided as a set of social-media posts with associated metadata. See [Data]({% link tracks/track4/data.md %}) for details on the corpus and how to obtain it.
+The corpus is provided as a set of social-media posts with associated metadata. See [Data]({% link tracks/track-4/data.md %}) for details on the corpus and how to obtain it.
 
 ## Task
 Build an assistant that based on the provided corpus of posts, answers analyst questions, grounded in the corpus:
