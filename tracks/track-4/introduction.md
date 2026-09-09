@@ -3,7 +3,7 @@ title: Introduction
 parent: "Track 4: Twitter Disinformation Analyst Assistant"
 nav_order: 1
 layout: home
-permalink: /tracks/track4/introduction/
+permalink: /tracks/track-4/introduction/
 ---
 
 # Introduction
@@ -46,4 +46,6 @@ It returns a JSON response containing:
 - `assessment` (present only when `assess_post` was sent): a structured verdict on the submitted post.
 
 
+
+Next: [Data]({% link tracks/track-4/data.md %})  →
 
