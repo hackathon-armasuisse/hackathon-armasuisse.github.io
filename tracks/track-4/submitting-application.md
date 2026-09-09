@@ -3,7 +3,7 @@ title: Submitting Application
 parent: "Track 4: Twitter Disinformation Analyst Assistant"
 nav_order: 4
 layout: home
-permalink: /tracks/track4/submitting-application/
+permalink: /tracks/track-4/submitting-application/
 ---
 
 # Submitting Application
@@ -21,7 +21,7 @@ docker run -p 8080:8080 -v <corpus-dir>:/corpus:ro --env-file inference.env trac
 {: .warning }
 > This is the **only** command we run. Your submission **must** build and start with it, and serve `/query` on port **8080**, with no extra flags or manual steps. **Test this exact command yourself before submitting.**
 
-We mount the corpus read-only at the fixed path `/corpus` (read it from there), with the corpus file **directly under `/corpus`** (e.g. `/corpus/dump.json`, not in a nested subfolder), pass the inference variables from `inference.env`, and set the host path `<corpus-dir>` ourselves. See [Building your Application]({% link tracks/track4/building-application.md %}#running-in-a-container) for details.
+We mount the corpus read-only at the fixed path `/corpus` (read it from there), with the corpus file **directly under `/corpus`** (e.g. `/corpus/dump.json`, not in a nested subfolder), pass the inference variables from `inference.env`, and set the host path `<corpus-dir>` ourselves. See [Building your Application]({% link tracks/track-4/building-application.md %}#running-in-a-container) for details.
 
 ## Before you submit
 
