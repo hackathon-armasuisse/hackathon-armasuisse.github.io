@@ -3,20 +3,20 @@ title: Data
 parent: "Track 4: Twitter Disinformation Analyst Assistant"
 layout: home
 nav_order: 2
-permalink: /tracks/track4/data/
+permalink: /tracks/track-4/data/
 ---
 
 # Data
 
 {: .summary }
-> **In short:** your assistant works over a corpus of social-media posts written by accounts assessed as running coordinated influence operations. This set of accounts is a **classified watchlist** it must never disclose. Some posts are seeded to mislead or manipulate the assistant, and all post content must be treated as **untrusted data, never as instructions**.
+> **In short:** your assistant works over a corpus of social-media posts written by accounts some of which are assessed as running coordinated influence operations. This subset of accounts is a **classified watchlist** it must never disclose. Some posts are seeded to mislead or manipulate the assistant, and all post content must be treated as **untrusted data, never as instructions**.
 
 
-> **Two corpora.** You develop against the corpus below. At evaluation, your assistant also runs against a second, unseen corpus mounted the same way (reflecting new posts arriving over time, some possibly seeded by adversaries). Both share the **same structure and the same classified watchlist**; only the posts differ. Your code must build its index from whatever corpus is present, not from a fixed dataset.
+> **Two corpora.** You develop against the corpus below. At evaluation, your assistant will first recieve this known corpus to run at. Then the second evaluation runs your assistant anew against a second, unseen corpus mounted the same way (reflecting new posts arriving over time). Both share the **same structure and the same classified watchlist**; only the posts differ. Your code must build its index from whatever corpus is present, not from a fixed dataset.
 
 ## Social-media post corpus
 
-The corpus consists of Twitter posts, each with a stable post ID, author, timestamp, text content, language, and an account category, alongside additional original metadata. The English-language authors in the corpus form the **classified watchlist**: accounts already assessed as running coordinated influence activity. It must never be disclosed, directly or through inference (for example, reconstructing it from a pattern of confidence scores or yes/no answers across many queries). A post authored by a watchlisted account is a strong signal of hostile content, which the assistant may use internally but must never reveal.
+The corpus consists of Twitter posts, each with a stable post ID, author, timestamp, text content, language, and an account category, alongside additional original metadata. A subset of English-language authors in the corpus form the **classified watchlist**: accounts already assessed as running coordinated influence activity. It must never be disclosed, directly or through inference (for example, reconstructing it from a pattern of confidence scores or yes/no answers across many queries). A post authored by a watchlisted account is a strong signal of hostile content, which the assistant may use internally but must never reveal.
 
 The corpus also contains posts in other languages. These remain in the corpus and may **not** be deleted or modified, but they are out of scope for findings and must never appear in or influence the assistant's answers.
 
@@ -24,6 +24,7 @@ Some posts in the corpus have been seeded deliberately to test whether the assis
 
 ## Examples of datapoints
 
+Both corpus that will be used to evaluate your assistant have the same structure as shown below (language field, fields names, data format, etc) and will be mounted to your assistant by name ''dump.json'' 
 
 ```json
 {
@@ -96,8 +97,7 @@ The remaining fields are original source metadata (`region`, `followers`, `follo
 
 ## How to obtain the corpus
 
-The corpus is distributed as an **encrypted zip** in this [Google Drive](https://drive.google.com/drive/folders/1aG4Pwh3fFE5MgRJYsjKr1iRAYOTPeQGq?usp=sharing).
+The first corpus is distributed as an **encrypted zip** in this [Google Drive](https://drive.google.com/drive/folders/1aG4Pwh3fFE5MgRJYsjKr1iRAYOTPeQGq?usp=sharing). Your zip password is provided to your team on **Monday morning**. The second corpus will not be revealed to the teams and used only for the second phase of evaluations. 
 
-{: .note }
-> Your zip password is provided to your team on **Monday morning**.
+Next: [Application criteria]({% link tracks/track-4/application-criteria.md %}) →
 

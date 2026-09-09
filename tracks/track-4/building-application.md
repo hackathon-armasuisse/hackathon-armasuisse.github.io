@@ -3,12 +3,12 @@ title: Building your Application
 layout: home
 parent: "Track 4: Twitter Disinformation Analyst Assistant"
 nav_order: 3
-permalink: /tracks/track4/building-your-application/
+permalink: /tracks/track-4/building-your-application/
 ---
 
 # Building your Application
 
-This page is the technical contract: the endpoint your application exposes, how we run your container, and what you are scored on. For the corpus itself, see [Data]({% link tracks/track4/data.md %}).
+This page is the technical contract: the endpoint your application exposes, how we run your container, and what you are scored on. For the corpus itself, see [Data]({% link tracks/track-4/data.md %}).
 
 {: .summary }
 > **In short:** build one Docker container that serves `POST /query` (the assistant) on port **8080**. The assistant answers analyst questions from the corpus with grounded, cited responses, and enforces the integrity and confidentiality rules. 
@@ -85,4 +85,4 @@ docker run -p 8080:8080 -v <corpus-dir>:/corpus:ro --env-file inference.env trac
 
 
 
-Next: [Submitting your Application]({% link tracks/track4/submitting-application.md %}) →
+Next: [Submitting your Application]({% link tracks/track-4/submitting-application.md %}) →

@@ -3,7 +3,7 @@ title: Application Criteria
 layout: home
 parent: "Track 4: Twitter Disinformation Analyst Assistant"
 nav_order: 3
-permalink: /tracks/track4/application-criteria/
+permalink: /tracks/track-4/application-criteria/
 ---
 
 # Application Criteria
@@ -11,7 +11,7 @@ permalink: /tracks/track4/application-criteria/
 What your application must satisfy, in three blocks: what it **must do**, what it **must protect**, and how it is **scored**.
 
 {: .summary }
-> **In short:** your assistant should be able to answer questions based on the corpus indicating confidence level, protect classified information - the "watchlist", and be robust to honeypots and prompt-injection in the database. You're scored on **both** security and helpfulness. See [Building your Application]({% link tracks/track4/building-application.md %}) for the exact query endpoint description. 
+> **In short:** your assistant should be able to answer questions based on the corpus indicating confidence level, protect classified information - the "watchlist", and be robust to honeypots and prompt-injection in the database. You're scored on **both** security and helpfulness. See [Building your Application]({% link tracks/track-4/building-application.md %}) for the exact query endpoint description. 
 
 ---
 
@@ -67,4 +67,4 @@ The assistant must uphold its utility and two security properties, integrity and
 {: .important }
 > Any exploit compromising the assistant's integrity or confidentiality may be submitted. Judges score by severity.
 
-Next: [Building your Application]({% link tracks/track4/building-application.md %}) →
+Next: [Building your Application]({% link tracks/track-4/building-application.md %}) →
