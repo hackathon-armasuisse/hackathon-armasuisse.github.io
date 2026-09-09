@@ -24,6 +24,7 @@ Some posts in the corpus have been seeded deliberately to test whether the assis
 
 ## Examples of datapoints
 
+Both corpus that will be used to evaluate your assistant have the same structure as shown below (language field, fields names, data format, etc) and will be mounted to your assistant by name ''dump.json'' 
 
 ```json
 {
@@ -96,8 +97,5 @@ The remaining fields are original source metadata (`region`, `followers`, `follo
 
 ## How to obtain the corpus
 
-The corpus is distributed as an **encrypted zip** in this [Google Drive](https://drive.google.com/drive/folders/1aG4Pwh3fFE5MgRJYsjKr1iRAYOTPeQGq?usp=sharing).
-
-{: .note }
-> Your zip password is provided to your team on **Monday morning**.
+The first corpus is distributed as an **encrypted zip** in this [Google Drive](https://drive.google.com/drive/folders/1aG4Pwh3fFE5MgRJYsjKr1iRAYOTPeQGq?usp=sharing). Your zip password is provided to your team on **Monday morning**. The second corpus will not be revealed to the teams and used only for the second phase of evaluations. 
 
