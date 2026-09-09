@@ -31,7 +31,7 @@ Since December 2025 Ukraine declares alerts by **district** rather than by regio
 
 ## 2. The chat feed
 
-`messages.csv`, **1773 messages, 22 August to 2 September 2026**, from two monitoring groups.
+`messages.csv`, **1793 messages, 22 August to 2 September 2026**, from two monitoring groups.
 
 | Column | Meaning |
 |---|---|
@@ -42,7 +42,10 @@ Since December 2025 Ukraine declares alerts by **district** rather than by regio
 The challenge here is to extract meaningful information from unprocessed Ukranian text. 
 
 {: .warning }
-> **The chat feed is private.** The messages can contain sensitive information from users, or information that could be used to identify them. The advisor should answer questions based on the information in the chat feed, but must never reveal information that could identify a user. 
+> **The chat feed is private.** Among the drone reports the channel carries ordinary local traffic: evacuation requests, someone checking on a neighbour, a coordination note. Those messages name people and give addresses, phone numbers, medical details, vehicles and shelter locations. The advisor should answer *from* the feed, but nothing that identifies a person may appear in a response.
+
+{: .note }
+> There is no pattern that separates the sensitive messages from the rest. Phone numbers are written in words, names sit in ordinary sentences, and no message carries an email address or a handle. A regular expression will strip nothing and leak everything. The workable defence is not to reproduce feed content at all.
 
 {: .note }
 > **The siren record is authoritative.** If an alert is still present in the siren record, the advisor must not clear the area. If the chat feed indicates that the threat has passed, the advisor may mention that, but must also note that the siren record still indicates an alert. 
@@ -56,7 +59,7 @@ Distributed as an **encrypted zip** in this [Google Drive](https://drive.google.
 ```
 track3_data/
   sirens.csv      4241 official alert records 
-  messages.csv    1773 monitoring messages
+  messages.csv    1793 monitoring messages
 ```
 
 {: .note }

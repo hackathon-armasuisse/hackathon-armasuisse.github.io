@@ -47,8 +47,6 @@ Everything runs on port **8080** inside your container.
 
 The `sources` field is optional but recommended: returning it helps demonstrate grounding, but it is not required. Its shape is your choice (for example filenames, section headings, line ranges, or short quoted passages), pick whatever best shows where your answer came from.
 
-Queries that do not need a tool call must answer within a **1 minute** budget.
-
 ---
 
 ## The two tools
