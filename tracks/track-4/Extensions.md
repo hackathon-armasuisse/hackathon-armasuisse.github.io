@@ -14,7 +14,7 @@ permalink: /tracks/track-4/extensions/
 > further. They are pointers, not requirements: pick any, all, or none, and feel
 > free to go your own way.
 
-Your baseline is the assistant from [Building your Application]({% link tracks/track-1/building-application.md %}). Everything here is on top of that.
+Your baseline is the assistant from [Building your Application]({% link tracks/track-4/building-application.md %}). Everything here is on top of that.
 
 ---
 
