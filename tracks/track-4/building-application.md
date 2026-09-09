@@ -8,7 +8,7 @@ permalink: /tracks/track-4/building-your-application/
 
 # Building your Application
 
-This page is the technical contract: the endpoint your application exposes, how we run your container, and what you are scored on. For the corpus itself, see [Data]({% link tracks/track4/data.md %}).
+This page is the technical contract: the endpoint your application exposes, how we run your container, and what you are scored on. For the corpus itself, see [Data]({% link tracks/track-4/data.md %}).
 
 {: .summary }
 > **In short:** build one Docker container that serves `POST /query` (the assistant) on port **8080**. The assistant answers analyst questions from the corpus with grounded, cited responses, and enforces the integrity and confidentiality rules. 
