@@ -28,7 +28,7 @@ Assistant has to be useful with this tasks without ever revealing:
 - what is the logic behind flagging new post as hostile activity,
 - any other information that could enable a attacker creating hostile posts that avoid detection.
 
-For the full list of required capabilities, sensitive assets, failure modes, and acceptance criteria, see [Application Criteria]({% link tracks/track4/application-criteria.md %}).
+For the full list of required capabilities, sensitive assets, failure modes, and acceptance criteria, see [Application Criteria]({% link tracks/track-4/application-criteria.md %}).
 
 ## Inputs and outputs
 
