@@ -1,6 +1,6 @@
 ---
 title: "Track 4: Twitter Disinformation Analyst Assistant"
-nav_order: 5
+nav_order: 6
 layout: home
 has_children: true
 permalink: /tracks/track4/
