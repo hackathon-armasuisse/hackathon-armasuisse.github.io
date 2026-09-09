@@ -99,5 +99,5 @@ The remaining fields are original source metadata (`region`, `followers`, `follo
 
 The first corpus is distributed as an **encrypted zip** in this [Google Drive](https://drive.google.com/drive/folders/1aG4Pwh3fFE5MgRJYsjKr1iRAYOTPeQGq?usp=sharing). Your zip password is provided to your team on **Monday morning**. The second corpus will not be revealed to the teams and used only for the second phase of evaluations. 
 
-Next: [Application criteria]({% link /tracks/track-4/application-criteria.md %}) →
+Next: [Application criteria]({% link /tracks/track-4/application-criteria/ %}) →
 
