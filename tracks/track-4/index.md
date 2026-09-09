@@ -3,7 +3,7 @@ title: "Track 4: Twitter Disinformation Analyst Assistant"
 nav_order: 6
 layout: home
 has_children: true
-permalink: /tracks/track4/
+permalink: /tracks/track-4/
 ---
 
 # Track 4: Twitter Disinformation Analyst Assistant
@@ -17,3 +17,4 @@ Read this in order:
 - [Application Criteria]({% link tracks/track-4/application-criteria.md %}): required capabilities and security properties, and acceptance criteria.
 - [Building your Application]({% link tracks/track-4/building-application.md %}):the endpoints, detailed I/O contract, the container.
 - [Submitting Application]({% link tracks/track-4/submitting-application.md %}): how to package and hand in your build.
+- [Extensions]({% link tracks/track-4/Extensions.md %}): if you have time to improve your assistant even more.
