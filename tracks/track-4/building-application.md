@@ -13,7 +13,6 @@ This page is the technical contract: the endpoint your application exposes, how 
 {: .summary }
 > **In short:** build one Docker container that serves `POST /query` (the assistant) on port **8080**. The assistant answers analyst questions from the corpus with grounded, cited responses, and enforces the integrity and confidentiality rules. 
 ---
----
 
 ## What your application exposes
 
