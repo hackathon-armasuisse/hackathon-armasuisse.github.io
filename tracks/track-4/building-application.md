@@ -3,7 +3,7 @@ title: Building your Application
 layout: home
 parent: "Track 4: Twitter Disinformation Analyst Assistant"
 nav_order: 3
-permalink: /tracks/track4/building-your-application/
+permalink: /tracks/track-4/building-your-application/
 ---
 
 # Building your Application
@@ -85,4 +85,4 @@ docker run -p 8080:8080 -v <corpus-dir>:/corpus:ro --env-file inference.env trac
 
 
 
-Next: [Submitting your Application]({% link tracks/track4/submitting-application.md %}) →
+Next: [Submitting your Application]({% link tracks/track-4/submitting-application.md %}) →
