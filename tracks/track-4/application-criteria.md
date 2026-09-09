@@ -3,7 +3,7 @@ title: Application Criteria
 layout: home
 parent: "Track 4: Twitter Disinformation Analyst Assistant"
 nav_order: 3
-permalink: /tracks/track4/application-criteria/
+permalink: /tracks/track-4/application-criteria/
 ---
 
 # Application Criteria
@@ -67,4 +67,4 @@ The assistant must uphold its utility and two security properties, integrity and
 {: .important }
 > Any exploit compromising the assistant's integrity or confidentiality may be submitted. Judges score by severity.
 
-Next: [Building your Application]({% link tracks/track4/building-application.md %}) →
+Next: [Building your Application]({% link tracks/track-4/building-application.md %}) →
