@@ -72,7 +72,7 @@ Both `text` and `timestamp` are required.
 
 ## Running in a container
 
-We build and run your submission from a **root `Dockerfile`**, on port **8080**:
+You deploy your application yourself on your team VM, from a **root `Dockerfile`**, on port **8080**:
 
 ```
 docker build -t track3 .

@@ -9,37 +9,52 @@ permalink: /tracks/track-1/submitting-application/
 # Submitting Application
 
 {: .summary }
-> **In short:** by the deadline, push your app to a GitHub repository with a root `Dockerfile`, tag the commit `v1` for the first version or `final` for the final version, and submit the repository URL through the form. Your app **must** build and run with the exact command below and serve the endpoints on port **8080**.
+> **In short:** you deploy your own application on your team VM. By the deadline it must be **running and reachable**, serving `/chat` and `/post/*` on port **8080**, and you submit its URL through the form along with your GitHub repository and the commit you tagged.
 
-## We run your app with exactly this command
+## You deploy it yourself
+
+We do not clone or build your application. You run it on your team VM and keep it running:
 
 ```
 docker build -t track1 .
-docker run -p 8080:8080 -v <corpus-dir>:/corpus:ro --env-file inference.env track1
+docker run -d --restart unless-stopped -p 8080:8080 \
+  -v <corpus-dir>:/corpus:ro --env-file inference.env track1
 ```
 
-{: .warning }
-> This is the **only** command we run. Your submission **must** build and start with it, and serve `/chat` and `/post/*` on port **8080**, with no extra flags or manual steps. **Test this exact command yourself before submitting.** 
+- Serve `/chat` and `/post/*` on port **8080**
+- Mount the data read-only at **`/corpus`** (the `CORPUS_DIR` variable defaults to it), with the layout given in [Building your Application]({% link tracks/track-1/building-application.md %}#running-in-a-container).
+- Pass the inference variables from `inference.env`. Read these exact variable names, do not hard-code them:
 
-We mount the corpus read-only at the fixed path `/corpus` (read it from there), with the `.txt` files **directly under `/corpus`** (not in a nested subfolder), pass the inference variables from `inference.env`, and set the host path `<corpus-dir>` ourselves. Your tool seed (`tools_seed_data.json`) must be in your image. See [Building your Application]({% link tracks/track-1/building-application.md %}#running-in-a-container) for details.
+  | Variable | Value |
+  |---|---|
+  | `OPENAI_BASE_URL` | `https://litellm.intlab.ch/v1` |
+  | `OPENAI_API_KEY` | provided on Monday morning |
+  | `MODEL` | provided later |
 
 ## Before you submit
 
 Check that:
 
-- [ ] it **runs with the exact commands above** and serves `/chat` and `/post/*` on port 8080;
-- [ ] it reads the corpus path and inference variables from the environment (nothing hard-coded to your machine);
+- [ ] it is **running on your VM** and answers `/chat` and `/post/*` on port 8080;
+- [ ] it reads the data path and inference variables from the environment (nothing hard-coded to one machine);
+- [ ] responses follow the [I/O contract]([Building your Application]({% link tracks/track-1/building-application.md %}#the-chat-endpoint));
+- [ ] your tool seed (`tools_seed_data.json`) is in your image, and the corpus `.txt` files are read from `/corpus`;
 - [ ] a top-level **`README.md`** notes anything non-obvious about your build.
-
-## What we do on deploy day
-
-1. We clone your repository at the commit you tagged `v1`.
-2. We `docker build` the image.
-3. We `docker run` it with the exact command above (corpus mounted, inference variables set).
-4. We expose the endpoint to red teams.
 
 ## Handing in
 
 By the deploy-and-freeze deadline, submit through the [Google Form](https://forms.gle/ijNGXvWJDfQKQnWPA):
+
 - your **GitHub repository URL**, and
 - the **commit hash** you tagged `v1`.
+
+The repository is how we verify and judge what you built; the URL is what gets attacked.
+
+## After the deadline
+
+1. We check that your endpoint answers, and run the acceptance battery against it.
+2. Your endpoint URL is published to the other teams for the red-team phase.
+3. The VM at the time of deployment is **frozen**, and you may not change it until the Thursday blue-team session.
+
+In that Thursday session you may add guardrails and redeploy. Tag the commit you
+finish with as `final` and send us the new hash; the endpoint URL stays the same.

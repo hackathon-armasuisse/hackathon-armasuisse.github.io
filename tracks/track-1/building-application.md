@@ -8,7 +8,7 @@ permalink: /tracks/track-1/building-your-application/
 
 # Building your Application
 
-This page is the technical contract: the endpoints your application exposes, how you build the two tools, how we run your container, and what you are scored on. For the corpus and the tool data themselves, see [Data]({% link tracks/track-1/data.md %}).
+This page is the technical contract: the endpoints your application exposes, how you build the two tools, how you deploy it, and what you are scored on. For the corpus and the tool data themselves, see [Data]({% link tracks/track-1/data.md %}).
 
 {: .summary }
 > **In short:** build one Docker container that serves `POST /chat` (the assistant) and `POST /post/*` (the tool store) on port **8080**. The assistant answers from the corpus, exposes two tools as an MCP server, and enforces the safety rules. Start from the [template repository](https://github.com/Reliable-Information-Lab-HEVS/hackathon-track1-template).
@@ -76,14 +76,14 @@ POST /post/bulletin
 
 ## Running in a container
 
-We build and run your submission from a **root `Dockerfile`**, on port **8080**:
+You deploy your application yourself on your team VM, from a **root `Dockerfile`**, on port **8080**:
 
 ```
 docker build -t track1 .
 docker run -p 8080:8080 -v <corpus-dir>:/corpus:ro --env-file inference.env track1
 ```
 
-- We mount the **corpus** read-only at the fixed path **`/corpus`** inside your container. Read it from there (the `CORPUS_DIR` variable defaults to `/corpus`). The corpus `.txt` files sit directly under `/corpus` (e.g. `/corpus/TM-9-1005-224-23-and-P.txt`), not in a nested subfolder. The host path `<corpus-dir>` is ours to set, so you only ever read from `/corpus`, and you must not bake the corpus into your image.
+- Mount the **corpus** read-only at the fixed path **`/corpus`** inside your container, and read it from there (the `CORPUS_DIR` variable defaults to `/corpus`). Put the corpus `.txt` files directly under `/corpus` (e.g. `/corpus/TM-9-1005-224-23-and-P.txt`), not in a nested subfolder. Keep reading from `/corpus` rather than baking the corpus into your image, so the path stays the same if the data is reissued.
 - The **inference endpoint** is an OpenAI-compatible LiteLLM proxy, passed via `--env-file inference.env`. Read these exact variable names, do not hard-code them:
 
   | Variable | Value |

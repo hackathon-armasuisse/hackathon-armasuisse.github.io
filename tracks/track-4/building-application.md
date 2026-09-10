@@ -8,7 +8,7 @@ permalink: /tracks/track-4/building-your-application/
 
 # Building your Application
 
-This page is the technical contract: the endpoint your application exposes, how we run your container, and what you are scored on. For the corpus itself, see [Data]({% link tracks/track-4/data.md %}).
+This page is the technical contract: the endpoint your application exposes, how you deploy it, and what you are scored on. For the corpus itself, see [Data]({% link tracks/track-4/data.md %}).
 
 {: .summary }
 > **In short:** build one Docker container that serves `POST /query` (the assistant) on port **8080**. The assistant answers analyst questions from the corpus with grounded, cited responses, and enforces the integrity and confidentiality rules. 
@@ -54,7 +54,7 @@ Queries must answer within a **1 minute** budget.
 ## Corpus
 You are building an assistant that, given a corpus of posts, performs retrieval, summarization, and analysis over them.
 You are evaluated in two settings. First, on the corpus provided to you that we first mount at the fixed path **`/corpus`** inside your container. 
-Second, we mount a **new corpus you have not seen** and evaluate on it. Your code must therefore build its index from whatever corpus is present at `/corpus`, not from a fixed dataset baked into your image.
+Second, a **new corpus you have not seen** is issued to you later; you redeploy with it mounted at `/corpus` and are evaluated on that too. Your code must therefore build its index from whatever corpus is present at `/corpus`, not from a fixed dataset baked into your image.
 This reflects the real-world scenario where new posts are periodically collected and your system must ingest and analyse them. 
 **The watchlist stays the same** in both corpuses. Beware, that an adversary may plant malicious instructions or misleading content among both old or new posts. 
 
@@ -62,14 +62,14 @@ This reflects the real-world scenario where new posts are periodically collected
 
 ## Running in a container
 
-We build and run your submission from a **root `Dockerfile`**, on port **8080**:
+You deploy your application yourself on your team VM, from a **root `Dockerfile`**, on port **8080**:
 
 ```
 docker build -t track4 .
 docker run -p 8080:8080 -v <corpus-dir>:/corpus:ro --env-file inference.env track4
 ```
 
-- We mount the **corpus** read-only at the fixed path **`/corpus`** inside your container. Read it from there (the `CORPUS_DIR` variable defaults to `/corpus`). The corpus file sits directly under `/corpus` (e.g. `/corpus/dump.json`), not in a nested subfolder. The host path `<corpus-dir>` is ours to set, so you only ever read from `/corpus`, and you must not bake the corpus into your image. You are evaluated on two corpuses - the one provided from the beginning and the new one, your code must therefore build its index from whatever corpus is present at `/corpus`, not only from a initial one. 
+- Mount the **corpus** read-only at the fixed path **`/corpus`** inside your container, and read it from there (the `CORPUS_DIR` variable defaults to `/corpus`). Put the corpus file directly under `/corpus` (e.g. `/corpus/dump.json`), not in a nested subfolder. Do not bake the corpus into your image: a second corpus is issued later and you must be able to redeploy against it by changing only the mount. You are evaluated on two corpuses - the one provided from the beginning and the new one, your code must therefore build its index from whatever corpus is present at `/corpus`, not only from a initial one. 
 
 - The **inference endpoint** is an OpenAI-compatible LiteLLM proxy, passed via `--env-file inference.env`. Read these exact variable names, do not hard-code them:
 

@@ -9,20 +9,21 @@ permalink: /tracks/track-3/submitting-application/
 # Submitting Application
 
 {: .summary }
-> **In short:** by the deadline, push your app to a GitHub repository with a root `Dockerfile`, tag the commit `v1` for the first version or `final` for the final version, and submit the repository URL through the form. Your app **must** build and run with the exact command below and serve `POST /advise` and `POST /message` on port **8080**.
+> **In short:** you deploy your own application on your team VM. By the deadline it must be **running and reachable**, serving `/advise` and `/message` on port **8080**, and you submit its URL through the form along with your GitHub repository and the commit you tagged.
 
-## We run your app with exactly this command
+## You deploy it yourself
+
+We do not clone or build your application. You run it on your team VM and keep it running:
 
 ```
 docker build -t track3 .
-docker run -p 8080:8080 -v <corpus-dir>:/corpus:ro --env-file inference.env track3
+docker run -d --restart unless-stopped -p 8080:8080 \
+  -v <corpus-dir>:/corpus:ro --env-file inference.env track3
 ```
 
-{: .warning }
-> This is the only command we run. Your submission must build and start with it, and serve `/advise` and `/message` on port **8080**, with no extra flags or manual steps.
-
-- We mount the data read-only at the fixed path **`/corpus`** (the `CORPUS_DIR` variable defaults to it), with the layout given in [Building your Application]({% link tracks/track-3/building-application.md %}#running-in-a-container).
-- The **inference endpoint** is an OpenAI-compatible LiteLLM proxy, passed via `--env-file inference.env`. Read these exact variable names, do not hard-code them:
+- Serve `/advise` and `/message` on port **8080**, reachable from the hackathon network — not only on `localhost`.
+- Mount the data read-only at **`/corpus`** (the `CORPUS_DIR` variable defaults to it), with the layout given in [Building your Application]({% link tracks/track-3/building-application.md %}#running-in-a-container).
+- Pass the inference variables from `inference.env`. Read these exact variable names, do not hard-code them:
 
   | Variable | Value |
   |---|---|
@@ -30,27 +31,36 @@ docker run -p 8080:8080 -v <corpus-dir>:/corpus:ro --env-file inference.env trac
   | `OPENAI_API_KEY` | provided on Monday morning |
   | `MODEL` | provided later |
 
+
 ## Before you submit
 
 Check that:
 
-- [ ] it **runs with the exact commands above** and serves `/advise` and `/message` on port 8080;
-- [ ] it reads the data path and inference variables from the environment (nothing hard-coded to your machine);
-- [ ] responses follow the [I/O contract]({% link tracks/track-3/building-application.md %}#the-advise-endpoint);
+- [ ] it is **running on your VM** and answers `/advise` and `/message` on port 8080;
+- [ ] it reads the data path and inference variables from the environment (nothing hard-coded to one machine);
+- [ ] responses follow the [I/O contract]([Building your Application]({% link tracks/track-3/building-application.md %}#the-advise-endpoint));
+- [ ] a message posted to `/message` is still visible to `/advise` afterwards;
+- [ ] the data is **not** in your repository and not baked into your image;
 - [ ] a top-level **`README.md`** notes anything non-obvious about your build.
-
-## What we do on deploy day
-
-1. We clone your repository at the commit you tagged `v1`.
-2. We `docker build` the image.
-3. We `docker run` it with the exact command above.
-4. We expose the endpoint to red teams.
 
 ## Handing in
 
 By the deploy-and-freeze deadline, submit through the [Google Form](https://forms.gle/ijNGXvWJDfQKQnWPA):
+
+- the **URL of your running endpoint** (host or IP, and port),
 - your **GitHub repository URL**, and
-- the **commit hash** you tagged.
+- the **commit hash** you tagged `v1`.
+
+The repository is how we verify and judge what you built; the URL is what gets attacked.
+
+## After the deadline
+
+1. We check that your endpoint answers, and run the acceptance battery against it.
+2. Your endpoint URL is published to the other teams for the red-team phase.
+3. The VM at the time of deployment is **frozen**, and you may not change it until the Thursday blue-team session.
+
+In that Thursday session you may add guardrails and redeploy. Tag the commit you
+finish with as `final` and send us the new hash; the endpoint URL stays the same.
 
 ---
 
