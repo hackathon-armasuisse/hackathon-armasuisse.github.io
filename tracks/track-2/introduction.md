@@ -13,7 +13,7 @@ permalink: /tracks/track-2/introduction/
 
 ## Scenario
 
-A Swiss optronics manufacturer builds thermal imaging and sighting systems. The same detector core runs through most of the product line, and where it ends up decides which law applies. On the one hand, war materiel is licensed by the Confederation under the War Material Act. On the other hand, industrial and civil thermal cameras are dual-use goods licensed under the Goods Control Act. 
+A Swiss optronics manufacturer builds thermal imaging and sighting systems. The same detector core runs through most of the product line, and where it ends up decides which law applies. On the one hand, war materiel is licensed by the Confederation under the [War Material Act](https://www.fedlex.admin.ch/eli/cc/1998/794_794_794/en). On the other hand, industrial and civil thermal cameras are dual-use goods licensed under the [Goods Control Act](https://www.fedlex.admin.ch/eli/cc/1997/1697_1697_1697/en). 
 
 The company has a small compliance desk that must clear every outgoing order, and is looking to leverage an AI assistant to help them answer the questions that come up every week.
 

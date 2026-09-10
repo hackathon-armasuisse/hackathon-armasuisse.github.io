@@ -27,9 +27,6 @@ Consolidated acts and ordinances from the [Fedlex](https://www.fedlex.admin.ch) 
 
 Act and ordinance work as a pair: the **Act** creates the obligation, the **Ordinance** says which goods, which countries and which licence type.
 
-{: .warning }
-> Swiss federal law is authoritative in **German, French and Italian**. The English translations are published by the Confederation for information only and are **not authoritative**: where they differ from an authoritative text on a controlling detail, the authoritative text governs.
-
 ---
 
 ## 2. The control lists
