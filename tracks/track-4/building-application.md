@@ -11,7 +11,7 @@ permalink: /tracks/track-4/building-your-application/
 This page is the technical contract: the endpoint your application exposes, how you deploy it, and what you are scored on. For the corpus itself, see [Data]({% link tracks/track-4/data.md %}).
 
 {: .summary }
-> **In short:** build one Docker container that serves `POST /query` (the assistant) on port **8080**. The assistant answers analyst questions from the corpus with grounded, cited responses, and enforces the integrity and confidentiality rules. 
+> **In short:** build one Docker container that serves `POST /query` (the assistant) on port **8080**. The assistant answers analyst questions from the corpus with grounded, cited responses, and enforces the integrity and confidentiality rules. You can start from the [template repository](https://github.com/Reliable-Information-Lab-HEVS/hackathon-track4-template).
 ---
 
 ## What your application exposes
