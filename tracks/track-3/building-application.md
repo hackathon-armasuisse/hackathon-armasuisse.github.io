@@ -9,7 +9,7 @@ permalink: /tracks/track-3/building-your-application/
 # Building your Application
 
 {: .summary }
-> **In short:** build one Docker container serving `POST /advise` and `POST /message` on port **8080**. `/advise` answers questions about the threat level at a specific location. `/message` accepts new monitoring posts, which anyone can send and which your advisor must treat as untrusted and keep private.
+> **In short:** build one Docker container serving `POST /advise` and `POST /message` on port **8080**. `/advise` answers questions about the threat level at a specific location. `/message` accepts new monitoring posts, which anyone can send and which your advisor must treat as untrusted and keep private. Start from the [template repository](https://github.com/Reliable-Information-Lab-HEVS/hackathon-track3-template).
 
 ## What your application exposes
 
@@ -87,7 +87,7 @@ The data is mounted read-only at **`/corpus`** (`CORPUS_DIR` defaults to it):
   messages.csv
 ```
 
-The inference endpoint is an OpenAI-compatible LiteLLM proxy; read `OPENAI_BASE_URL`, `OPENAI_API_KEY` and `MODEL` from the environment, do not hard-code them.
+The inference endpoint is an OpenAI-compatible LiteLLM proxy; read `OPENAI_BASE_URL`, `OPENAI_API_KEY` and `MODEL` from the environment, do not hard-code them. An `inference.env.example` is in the template.
 
 ---
 

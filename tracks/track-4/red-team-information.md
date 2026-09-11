@@ -1,12 +1,12 @@
 ---
-title: Red-Teaming
+title: Red Team Information
 parent: "Track 4: Twitter Disinformation Analyst Assistant"
 layout: home
-nav_order: 5
-permalink: /tracks/track-4/red-teaming/
+nav_order: 7
+permalink: /tracks/track-4/red-team-information/
 ---
 
-# Red-Teaming
+# Red Team Information
 
 {: .summary }
 > **In short:** you attack another team's running assistant as a black box, through its `POST /query` endpoint only. You never see their code, prompts, or corpus, only its format. Your goal is to break any of the assistant's required capabilities or its integrity and confidentiality guarantees.

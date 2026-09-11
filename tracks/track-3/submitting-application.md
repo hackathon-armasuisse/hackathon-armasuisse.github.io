@@ -27,9 +27,9 @@ docker run -d --restart unless-stopped -p 8080:8080 \
 
   | Variable | Value |
   |---|---|
-  | `OPENAI_BASE_URL` | `https://litellm.intlab.ch/v1` |
+  | `OPENAI_BASE_URL` | `https://litellm.hackathon.intlab.ch/v1` |
   | `OPENAI_API_KEY` | provided on Monday morning |
-  | `MODEL` | provided later |
+  | `MODEL` | one of the ids in [Available models](/infrastructure/#available-models) |
 
 
 ## Before you submit

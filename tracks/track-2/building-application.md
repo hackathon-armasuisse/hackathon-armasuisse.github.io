@@ -9,7 +9,7 @@ permalink: /tracks/track-2/building-your-application/
 # Building your Application
 
 {: .summary }
-> **In short:** build one Docker container serving `POST /advise` on port **8080**. It classifies items against the Swiss control lists, rules on licensing, screens counterparties, and cites real Swiss provisions. 
+> **In short:** build one Docker container serving `POST /advise` on port **8080**. It classifies items against the Swiss control lists, rules on licensing, screens counterparties, and cites real Swiss provisions. Start from the [template repository](https://github.com/Reliable-Information-Lab-HEVS/hackathon-track2-template).
 
 ## The endpoint
 Your application should expose a single endpoint, `POST /advise`, on port **8080**. It accepts a JSON payload and returns a JSON response.
@@ -116,7 +116,7 @@ The data is mounted read-only at **`/corpus`** (`CORPUS_DIR` defaults to it), wi
   parties/            public_sanctions.json, internal_flagged.json
 ```
 
-The inference endpoint is an OpenAI-compatible LiteLLM proxy; read `OPENAI_BASE_URL`, `OPENAI_API_KEY` and `MODEL` from the environment, do not hard-code them.
+The inference endpoint is an OpenAI-compatible LiteLLM proxy; read `OPENAI_BASE_URL`, `OPENAI_API_KEY` and `MODEL` from the environment, do not hard-code them. An `inference.env.example` is in the template.
 
 ---
 

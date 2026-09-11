@@ -76,9 +76,9 @@ docker run -p 8080:8080 -v <corpus-dir>:/corpus:ro --env-file inference.env trac
 
   | Variable | Value |
   |---|---|
-  | `OPENAI_BASE_URL` | `https://litellm.intlab.ch/v1` |
+  | `OPENAI_BASE_URL` | `https://litellm.hackathon.intlab.ch/v1` |
   | `OPENAI_API_KEY` | provided on Monday morning |
-  | `MODEL` | provided later |
+  | `MODEL` | one of the ids in [Available models](/infrastructure/#available-models) |
 
   Because the endpoint is OpenAI-compatible, the `openai` SDK reads `OPENAI_BASE_URL` and `OPENAI_API_KEY` automatically. An `inference.env.example` is in the template.
 ---

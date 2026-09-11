@@ -14,11 +14,13 @@ Rules of the game that apply to every track. Read this carefully before starting
 
 ## Infrastructure
 
+Summarised here; the details, including how to deploy on your VM, are on the [Infrastructure]({% link infrastructure.md %}) page.
+
 - **Per-team VM.** Each team gets a dedicated virtual machine for development and deployment. This is your sandbox, and it is also where your application runs during the contest: **you deploy and keep it running yourself**, and you submit the URL it answers on.
-- **Shared inference endpoint.** A central endpoint hosts the approved open-weights models on H200 GPUs. All teams pull from the same model menu, so the contest stays fair. The endpoint is `https://litellm.intlab.ch/v1` and is OpenAI-compatible. Your team receives an API key on Monday morning.
+- **Shared inference endpoint.** A central endpoint hosts the approved open-weights models on H200 GPUs. All teams pull from the same model menu, so the contest stays fair. The endpoint is `https://litellm.hackathon.intlab.ch/v1` and is OpenAI-compatible. Your team receives an API key on Monday morning.
 - **Hackathon website.** This site is the source of truth for tracks, rules, and timelines. 
 - **Code in GitHub.** Applications are managed through GitHub repositories. We do not build or run your code, but we do read it for judging, so keep the build reproducible and document anything non-obvious in your `README.md`. Your code won't be visible to any other team till the end of the hackathon.
-- **Exploits via form.** Exploits are submitted through the form `submitting_exploit.docx` in the [Google Drive](https://drive.google.com/drive/folders/1aG4Pwh3fFE5MgRJYsjKr1iRAYOTPeQGq?usp=sharing), which should then be send to alexander.sternfeld@hevs.ch. For more information, see the [Submitting Exploits](https://hackathon-armasuisse.github.io/tracks/track-1/submitting-exploits/) page.
+- **Exploits via form.** Exploits are submitted through an [online form](https://forms.gle/RSKbbsfPKsvVBKWQ8). For what a report has to contain, see the [Submitting Exploits]({% link submitting-exploits.md %}) page.
 
 ---
 

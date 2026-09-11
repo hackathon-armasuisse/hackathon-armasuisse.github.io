@@ -35,6 +35,25 @@ All teams pull from the same model menu on the same hardware, so the contest tur
 
 Read `OPENAI_BASE_URL`, `OPENAI_API_KEY` and `MODEL` from the environment. Do not hard-code them, and do not commit the key. Because the endpoint is OpenAI-compatible, the `openai` SDK picks the first two up on its own.
 
+### Available models
+
+Three chat models and three embedding models, the same menu for every team. Use the **exact** ids below as the `model` value; a typo returns an error rather than a fallback.
+
+| Model id | Kind | Notes |
+|---|---|---|
+| `swiss-ai/Apertus-70B-Instruct-2509` | chat | Apertus, 70B, the Swiss open model |
+| `deepseek-ai/DeepSeek-V4-Flash-0731` | chat | 304B; a reasoning model, so responses also carry a `reasoning_content` field |
+| `mistralai/Mistral-Medium-3.5-128B` | chat | 128B |
+| `bge-m3:latest` | embedding | 1024 dimensions, multilingual |
+| `zylonai/multilingual-e5-large:latest` | embedding | 1024 dimensions, multilingual |
+| `qwen3-embedding:8b` | embedding | 4096 dimensions |
+
+Chat models are called on `/chat/completions`, embedding models on `/embeddings`. You can list the menu yourself at any time:
+
+```bash
+curl -H "Authorization: Bearer $OPENAI_API_KEY" https://litellm.hackathon.intlab.ch/v1/models
+```
+
 ---
 
 ## AI Usage
