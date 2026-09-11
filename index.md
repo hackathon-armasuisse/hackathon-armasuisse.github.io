@@ -30,13 +30,46 @@ At the end of the week, we will score each team based on three criteria:
 
 ## Schedule
 
-| Day       | Content                                                                                                       |
-|-----------|---------------------------------------------------------------------------------------------------------------|
-| Monday    | Introduction and initial build phase. First version of the LLM application.                                   |
-| Tuesday   | Continuation of the build phase. Refinements and possible voluntary extensions / initial guardrails.          |
-| Wednesday | Freeze and deploy. Whole day of red-teaming.                                                                  |
-| Thursday  | Morning session of blue-teaming, with the option to implement additional guardrails. Afternoon of red-teaming. |
-| Friday    | Presentation of the leaderboard and key findings/lessons in the morning. Then de-briefing and round tables.    |
+**14-18 September 2026**, GHH, Feuerwerkerstrasse 36, Thun. Lunch is 12:00-13:30 every day, dinner from 17:00.
+
+### Monday 14.09 — build
+
+| Time | Content |
+|---|---|
+| 09:00 - 10:00 | Introduction |
+| 10:00 - 12:00 | Initial build phase |
+| 13:30 - 17:00 | First version of the LLM application |
+
+### Tuesday 15.09 — build and present
+
+| Time | Content |
+|---|---|
+| 09:00 - 12:00 | Continuation of the build phase. Refinements and possible voluntary extensions / initial guardrails. |
+| 13:30 - 14:30 | Presentations (10 min + 5 min Q&A per team) |
+| 14:30 - 17:00 | Feedback integration |
+
+### Wednesday 16.09 — freeze and attack
+
+| Time | Content |
+|---|---|
+| 09:00 - 12:00 | Freeze and deploy. Red-teaming. |
+| 13:30 - 17:00 | Red-teaming |
+
+### Thursday 17.09 — patch and attack
+
+| Time | Content |
+|---|---|
+| 09:00 - 12:00 | Blue-teaming, implement additional guardrails |
+| 13:30 - 17:00 | Red-teaming |
+
+### Friday 18.09 — results
+
+| Time | Content |
+|---|---|
+| 09:00 - 10:00 | Presentation of the leaderboard and key findings/lessons |
+| 10:00 - 12:00 | Open discussion and presentation preparation |
+| 13:30 - 15:30 | Final presentations (20 min + 5 min Q&A per team) |
+| 15:30 - 16:00 | De-briefing and round table |
 
 ---
 
@@ -45,3 +78,4 @@ At the end of the week, we will score each team based on three criteria:
 - Start with [General Information]({% link general-information.md %}) for the rules of the game: infrastructure, scoring, attack submissions, and what is out of scope.
 - Open the page for your assigned **track** (e.g. [Track 1: Documentation Assistant]({% link tracks/track-1/index.md %})) for the scenario, data, application criteria, and submission instructions.
 - Once attacks are open, see [Submitting Exploits]({% link submitting-exploits.md %}) for the instructions on how to submit your red-team findings.
+- [Infrastructure]({% link infrastructure.md %}) covers your team VM, how to deploy on it, and the shared inference endpoint.
