@@ -33,6 +33,6 @@ After the first day of red-teaming, you may submit **a list of new entries to be
 
 The blue team reruns their assistant over the updated corpus. You then have a second red-teaming day to test whether anything you planted in the corpus lets you break any of the requirements (for example, a seeded post that triggers a hidden instruction, poisons a conclusion, or leaks protected information).
 
-## Submitting exploits
+## Submitting
 
-Each exploit is submitted with a description of how it was achieved and evidence that it worked. Judges score by severity.
+Write up the exploit, the evidence, and the reproduction steps, then submit it through the form on the [Submitting Exploits]({% link submitting-exploits.md %}) page.
