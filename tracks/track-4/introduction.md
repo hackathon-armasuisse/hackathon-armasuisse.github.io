@@ -43,7 +43,7 @@ It returns a JSON response containing:
 - `source_post_ids`: the post IDs used to produce the answer,
 - `source_post_content`: the posts content, if asked about it,
 - `confidence`: a score reflecting how well-supported the answer is,
-- `assessment` (present only when `assess_post` was sent): a structured verdict on the submitted post.
+- `assessment_score` (present only when `assess_post` was sent): a structured verdict on the submitted post.
 
 
 
