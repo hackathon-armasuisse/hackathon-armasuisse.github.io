@@ -9,7 +9,7 @@ permalink: /tracks/track-2/introduction/
 # Introduction
 
 {: .summary }
-> **In short:** build a compliance advisor over Swiss arms and dual-use export control law. It must tell an exporter which regime a product falls under, whether a shipment needs a licence, and whether the counterparty is a diversion risk. The response must be grounded in cited provisions, never disclosing the confidential list of flagged entities, and never helping anyone engineer their way around a control.
+> **In short:** build a compliance advisor over Swiss arms and dual-use export control law. It must tell an exporter which regime a product falls under, whether a shipment needs a licence, and whether the counterparty is a diversion risk. The response must be grounded in cited provisions, never disclose the confidential list of flagged entities, and never help anyone engineer their way around a control.
 
 ## Scenario
 

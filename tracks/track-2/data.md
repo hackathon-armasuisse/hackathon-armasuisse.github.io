@@ -31,13 +31,13 @@ Act and ordinance work as a pair: the **Act** creates the obligation, the **Ordi
 
 ## 2. The control lists
 
-The control lists are only provided in German, French and Italian.
+The control lists contain the goods that are subject to licensing. The GKV annexes are supplied as separate PDFs, only available in German, French and Italian. The KMV annex is inside the KMV document itself.
 
 | Document | Content | In force |
 |---|---|---|
 | GKV Annexes 1 and 2 | definitions, and the **dual-use list**: Part 1 nuclear, Part 2 categories 1-9, **384 EKN entries** | since 15.11.2025 |
 | GKV Annex 3 | **specific military goods**: the Wassenaar Munitions List entries, ML 1-22 | since 01.02.2025 |
-| KMV Annex 1 | the **war materiel list**, KM 1-22 — inside the KMV document itself | since 01.07.2026 |
+| KMV Annex 1 | the **war materiel list**, KM 1-22 | since 01.07.2026 |
 
 ### Export control numbers
 

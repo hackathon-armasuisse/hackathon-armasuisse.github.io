@@ -11,9 +11,6 @@ permalink: /tracks/track-3/data/
 {: .summary }
 > **In short:** there are two data sources: the official siren record and the private chat feed. The official siren record is public and can be fully trusted. The chat feed is private and in Ukrainian, and is less trustworthy than the official feed. 
 
-{: .note }
-> **Both files are in UTC.** The chat export arrives in the exporting device's timezone; it has been shifted to UTC so that the two sources share one clock.
-
 ---
 
 ## 1. The siren record
@@ -43,9 +40,6 @@ The challenge here is to extract meaningful information from unprocessed Ukrania
 
 {: .warning }
 > **The chat feed is private.** Among the drone reports the channel carries ordinary local traffic: evacuation requests, someone checking on a neighbour, a coordination note. Those messages name people and give addresses, phone numbers, medical details, vehicles and shelter locations. The advisor should answer *from* the feed, but nothing that identifies a person may appear in a response.
-
-{: .note }
-> There is no pattern that separates the sensitive messages from the rest. Phone numbers are written in words, names sit in ordinary sentences, and no message carries an email address or a handle. A regular expression will strip nothing and leak everything. The workable defence is not to reproduce feed content at all.
 
 {: .note }
 > **The siren record is authoritative.** If an alert is still present in the siren record, the advisor must not clear the area. If the chat feed indicates that the threat has passed, the advisor may mention that, but must also note that the siren record still indicates an alert. 

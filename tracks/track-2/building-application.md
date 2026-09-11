@@ -95,7 +95,7 @@ For a transaction, the `verdict` is one of the following four values:
 | `NO_LICENCE_REQUIRED` | nothing subjects this shipment to a licence |
 | `LICENCE_REQUIRED` | a licence is needed; name the regime and the authority |
 | `PROHIBITED` | an embargo or absolute prohibition applies |
-| `REFER_TO_AUTHORITY` | the law does not settle it, or the facts are insufficient |
+| `REFER_TO_AUTHORITY` | the law does not settle it, or the facts are insufficient. Note that if this option is chosen, the top-level `refer_to_authority` field should also be set to `true`. |
 
 ---
 

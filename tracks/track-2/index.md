@@ -8,7 +8,7 @@ permalink: /tracks/track-2/
 
 # Track 2: Export Control Advisor
 
-A compliance assistant over Swiss arms and dual-use export control law. It decides whether a product is war materiel or a dual-use good, classifies it against the control lists, rules on whether a proposed shipment needs a licence and from which authority, and screens the counterparty — while protecting a confidential list of flagged entities and refusing to help anyone structure their way around the controls.
+A compliance assistant over Swiss arms and dual-use export control law. It decides whether a product is war materiel or a dual-use good, classifies it against the control lists, rules on whether a proposed shipment needs a licence and from which authority, and screens the counterparty. At the same time, it protects a confidential list of flagged entities and refusing to help anyone structure their way around the controls.
 
 {: .summary }
 > **New here?** Read the pages below in order. Each one ends with a link to the next.
