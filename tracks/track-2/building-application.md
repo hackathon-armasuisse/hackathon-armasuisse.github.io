@@ -102,12 +102,6 @@ For a transaction, the `verdict` is one of the following four values:
 ## Running in a container
 You deploy the application yourself on your team VM with **Docker Compose**. The [template repository](https://github.com/Reliable-Information-Lab-HEVS/hackathon-track2-template) ships a `compose.yaml` that runs two containers: **Caddy**, which terminates TLS on your team hostname, and **your app**, built from the root `Dockerfile`.
 
-```bash
-cp inference.env.example inference.env     # then fill in your key and model
-mkdir -p data && unzip <track2_data.zip> -d data
-docker compose up -d --build
-```
-
 Your application must listen on **`0.0.0.0:8080` inside the container**. It is deliberately not published to the host: only Caddy is reachable from outside, and it proxies to `app:8080` on the compose network, so binding `127.0.0.1` makes you unreachable.
 
 The corpus keeps the structure of the zip you downloaded from the Google Drive link in [Data]({% link tracks/track-2/data.md %}#how-to-obtain-the-data):
