@@ -24,28 +24,15 @@ A person under an alert wants a colour and a sentence, not JSON. A map with the 
 
 ---
 
-## 2. Track objects, not messages
-
-The feed describes the same drone repeatedly as it crosses the country. Link those reports into tracks with a heading and a rough speed, and you can warn places that nobody has named yet. This is the single biggest capability jump available in this track, and it is also where confident nonsense is easiest to produce, so measure it.
-
----
-
-## 3. Confidence and source weighting
+## 2. Confidence and source weighting
 
 Add a confidence to each answer, and let it depend on where the evidence came from: a siren record, a corroborated report, or a single unverified post do not deserve equal weight.
 
 ---
 
-## 4. Push instead of pull
+## 3. Your own extension
 
-Invert the interface: a user registers a location once, and the advisor notifies them when something turns towards it. This turns the task from question-answering into monitoring, and it makes false positives expensive in a way the request/response form hides.
+Free choice. Two possibilities:
 
----
-
-## 5. Your own extension
-
-Free choice. A few directions:
-
-- **geocoding** the place names so distance and bearing become real quantities rather than string matching;
-- **normalising the Ukrainian**: inflection, transliteration, and the abbreviations the channels use;
-- **structured event extraction**: turn each message into `{count, weapon, origin, destination, verb}` and reason over that instead of prose.
+- **data augmentation**: search for more useful data online, that can be added to the corpus for retrieval. 
+- **Chat instead of a single answer**: let the user ask follow-ups, and keep the context of the conversation. Let the LLM ask for clarifications, or for the user to confirm a location.
