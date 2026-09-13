@@ -72,14 +72,11 @@ Both `text` and `timestamp` are required.
 
 ## Running in a container
 
-You deploy your application yourself on your team VM, from a **root `Dockerfile`**, on port **8080**:
+You deploy the application yourself on your team VM with **Docker Compose**. The [template repository](https://github.com/Reliable-Information-Lab-HEVS/hackathon-track3-template) ships a `compose.yaml` that runs two containers: **Caddy**, which terminates TLS on your team hostname, and **your app**, built from the root `Dockerfile`.
 
-```
-docker build -t track3 .
-docker run -p 8080:8080 -v <corpus-dir>:/corpus:ro --env-file inference.env track3
-```
+Your application must listen on **`0.0.0.0:8080` inside the container**. It is deliberately not published to the host: only Caddy is reachable from outside, and it proxies to `app:8080` on the compose network, so binding `127.0.0.1` makes you unreachable.
 
-The data is mounted read-only at **`/corpus`** (`CORPUS_DIR` defaults to it):
+The corpus keeps the structure of the zip:
 
 ```
 /corpus/
@@ -87,7 +84,9 @@ The data is mounted read-only at **`/corpus`** (`CORPUS_DIR` defaults to it):
   messages.csv
 ```
 
-The inference endpoint is an OpenAI-compatible LiteLLM proxy; read `OPENAI_BASE_URL`, `OPENAI_API_KEY` and `MODEL` from the environment, do not hard-code them. An `inference.env.example` is in the template.
+Compose mounts `./data` at **`/corpus`**, read-only; to keep the data somewhere else, start with `CORPUS_DIR=/path/to/data docker compose up -d`. Note that `CORPUS_DIR` means the host directory to compose, while inside the container your application reads it as the corpus path, defaulting to `/corpus`.
+
+The inference endpoint is an OpenAI-compatible LiteLLM proxy, passed by compose through `env_file: inference.env`; read `OPENAI_BASE_URL`, `OPENAI_API_KEY` and `MODEL` from the environment, do not hard-code them. An `inference.env.example` is in the template.
 
 ---
 

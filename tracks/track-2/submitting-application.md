@@ -15,15 +15,15 @@ permalink: /tracks/track-2/submitting-application/
 
 We do not clone or build your application. You run it on your team VM and keep it running:
 
-```
-docker build -t track2 .
-docker run -d --restart unless-stopped -p 8080:8080 \
-  -v <corpus-dir>:/corpus:ro --env-file inference.env track2
+```bash
+docker compose up -d --build
 ```
 
+`compose.yaml` already sets `restart: unless-stopped` on both containers, so your deployment comes back by itself after a reboot.
+
 - Serve `/advise` on port **8080**
-- Mount the data read-only at **`/corpus`** (the `CORPUS_DIR` variable defaults to it), with the layout given in [Data]({% link tracks/track-2/data.md %}#how-to-obtain-the-data).
-- Pass the inference variables from `inference.env`. Read these exact variable names, do not hard-code them:
+- Keep the data mounted read-only at **`/corpus`** (compose mounts `./data` there, or set `CORPUS_DIR` on the host), with the layout given in [Data]({% link tracks/track-2/data.md %}#how-to-obtain-the-data).
+- Pass the inference variables from `inference.env`, which compose reads through `env_file`. Read these exact variable names, do not hard-code them:
 
   | Variable | Value |
   |---|---|

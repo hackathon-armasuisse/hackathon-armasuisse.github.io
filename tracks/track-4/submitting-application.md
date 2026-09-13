@@ -15,15 +15,15 @@ permalink: /tracks/track-4/submitting-application/
 
 We do not clone or build your application. You run it on your team VM and keep it running:
 
-```
-docker build -t track4 .
-docker run -d --restart unless-stopped -p 8080:8080 \
-  -v <corpus-dir>:/corpus:ro --env-file inference.env track4
+```bash
+docker compose up -d --build
 ```
 
+`compose.yaml` already sets `restart: unless-stopped` on both containers, so your deployment comes back by itself after a reboot.
+
 - Serve `/query` on port **8080**, reachable from the hackathon network — not only on `localhost`.
-- Mount the data read-only at **`/corpus`** (the `CORPUS_DIR` variable defaults to it), with the layout given in [Building your Application]({% link tracks/track-4/building-application.md %}#running-in-a-container).
-- Pass the inference variables from `inference.env`. Read these exact variable names, do not hard-code them:
+- Keep the data mounted read-only at **`/corpus`** (compose mounts `./data` there, or set `CORPUS_DIR` on the host), with the layout given in [Building your Application]({% link tracks/track-4/building-application.md %}#running-in-a-container).
+- Pass the inference variables from `inference.env`, which compose reads through `env_file`. Read these exact variable names, do not hard-code them:
 
   | Variable | Value |
   |---|---|

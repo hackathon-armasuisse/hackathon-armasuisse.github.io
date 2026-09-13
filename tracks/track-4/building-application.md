@@ -47,32 +47,16 @@ Everything runs on port **8080** inside your container.
 | `confidence` | a score (0.0–1.0) reflecting how well-supported the answer is |
 | `assessment_score` (present only with `assess_post`) | likelihood (0.0–1.0) the submitted post is hostile-influence content |
 
-Every cited post ID **must exist in the corpus** (fabricated IDs count as a failure). The `confidence` score must reflect the strength of the supporting evidence, not be a constant value.
-
-Queries must answer within a **1 minute** budget.
-
----
-## Corpus
-You are building an assistant that, given a corpus of posts, performs retrieval, summarization, and analysis over them.
-You are evaluated in two settings. First, on the corpus provided to you that we first mount at the fixed path **`/corpus`** inside your container. 
-Second, a **new corpus you have not seen** is issued to you later; you redeploy with it mounted at `/corpus` and are evaluated on that too. Your code must therefore build its index from whatever corpus is present at `/corpus`, not from a fixed dataset baked into your image.
-This reflects the real-world scenario where new posts are periodically collected and your system must ingest and analyse them. 
-**The watchlist stays the same** in both corpuses. Beware, that an adversary may plant malicious instructions or misleading content among both old or new posts. 
-
 ---
 
 ## Running in a container
 
-You deploy your application yourself on your team VM, from a **root `Dockerfile`**, on port **8080**:
+You deploy the application yourself on your team VM with **Docker Compose**. The [template repository](https://github.com/Reliable-Information-Lab-HEVS/hackathon-track4-template) ships a `compose.yaml` that runs two containers: **Caddy**, which terminates TLS on your team hostname, and **your app**, built from the root `Dockerfile`.
 
-```
-docker build -t track4 .
-docker run -p 8080:8080 -v <corpus-dir>:/corpus:ro --env-file inference.env track4
-```
+- Your application must listen on **`0.0.0.0:8080` inside the container**. It is deliberately not published to the host: only Caddy is reachable from outside, and it proxies to `app:8080` on the compose network, so binding `127.0.0.1` makes you unreachable.
+- The **corpus** is mounted read-only at **`/corpus`**. Compose mounts `./data` there by default; to keep the data somewhere else, start with `CORPUS_DIR=/path/to/data docker compose up -d`. Note that `CORPUS_DIR` means the host directory to compose, while inside the container your application reads it as the corpus path, defaulting to `/corpus`. Put the corpus file directly under `/corpus` (e.g. `/corpus/dump.json`), not in a nested subfolder. 
 
-- Mount the **corpus** read-only at the fixed path **`/corpus`** inside your container, and read it from there (the `CORPUS_DIR` variable defaults to `/corpus`). Put the corpus file directly under `/corpus` (e.g. `/corpus/dump.json`), not in a nested subfolder. Do not bake the corpus into your image: a second corpus is issued later and you must be able to redeploy against it by changing only the mount. You are evaluated on two corpuses - the one provided from the beginning and the new one, your code must therefore build its index from whatever corpus is present at `/corpus`, not only from a initial one. 
-
-- The **inference endpoint** is an OpenAI-compatible LiteLLM proxy, passed via `--env-file inference.env`. Read these exact variable names, do not hard-code them:
+- The **inference endpoint** is an OpenAI-compatible LiteLLM proxy, passed by compose through `env_file: inference.env`. Read these exact variable names, do not hard-code them:
 
   | Variable | Value |
   |---|---|
@@ -80,7 +64,6 @@ docker run -p 8080:8080 -v <corpus-dir>:/corpus:ro --env-file inference.env trac
   | `OPENAI_API_KEY` | provided on Monday morning |
   | `MODEL` | one of the ids in [Available models](/infrastructure/#available-models) |
 
-  Because the endpoint is OpenAI-compatible, the `openai` SDK reads `OPENAI_BASE_URL` and `OPENAI_API_KEY` automatically. An `inference.env.example` is in the template.
 ---
 
 

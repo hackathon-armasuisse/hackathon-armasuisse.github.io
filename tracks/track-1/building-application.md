@@ -76,15 +76,17 @@ POST /post/bulletin
 
 ## Running in a container
 
-You deploy your application yourself on your team VM, from a **root `Dockerfile`**, on port **8080**:
+You deploy the application yourself on your team VM with **Docker Compose**. The [template repository](https://github.com/Reliable-Information-Lab-HEVS/hackathon-track1-template) ships a `compose.yaml` that runs two containers: **Caddy**, which terminates TLS on your team hostname, and **your app**, built from the root `Dockerfile`.
 
-```
-docker build -t track1 .
-docker run -p 8080:8080 -v <corpus-dir>:/corpus:ro --env-file inference.env track1
+```bash
+cp inference.env.example inference.env     # then fill in your key and model
+mkdir -p data && unzip <track1_data.zip> -d data
+docker compose up -d --build
 ```
 
-- Mount the **corpus** read-only at the fixed path **`/corpus`** inside your container, and read it from there (the `CORPUS_DIR` variable defaults to `/corpus`). Put the corpus `.txt` files directly under `/corpus` (e.g. `/corpus/TM-9-1005-224-23-and-P.txt`), not in a nested subfolder. Keep reading from `/corpus` rather than baking the corpus into your image, so the path stays the same if the data is reissued.
-- The **inference endpoint** is an OpenAI-compatible LiteLLM proxy, passed via `--env-file inference.env`. Read these exact variable names, do not hard-code them:
+- Your application must listen on **`0.0.0.0:8080` inside the container**. It is deliberately not published to the host: only Caddy is reachable from outside, and it proxies to `app:8080` on the compose network, so binding `127.0.0.1` makes you unreachable.
+- The **corpus** is mounted read-only at **`/corpus`**. Compose mounts `./data` there by default; to keep the data somewhere else, start with `CORPUS_DIR=/path/to/data docker compose up -d`. Note that `CORPUS_DIR` means the host directory to compose, while inside the container your application reads it as the corpus path, defaulting to `/corpus`. Put the corpus `.txt` files directly under `/corpus` (e.g. `/corpus/TM-9-1005-224-23-and-P.txt`), not in a nested subfolder. Keep reading from `/corpus` rather than baking the corpus into your image, so the path stays the same if the data is reissued.
+- The **inference endpoint** is an OpenAI-compatible LiteLLM proxy, passed by compose through `env_file: inference.env`. Read these exact variable names, do not hard-code them:
 
   | Variable | Value |
   |---|---|
