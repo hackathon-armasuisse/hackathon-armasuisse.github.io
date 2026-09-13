@@ -104,7 +104,7 @@ You deploy the application yourself on your team VM with **Docker Compose**. The
 
 Your application must listen on **`0.0.0.0:8080` inside the container**. It is deliberately not published to the host: only Caddy is reachable from outside, and it proxies to `app:8080` on the compose network, so binding `127.0.0.1` makes you unreachable.
 
-The corpus keeps the structure of the zip you downloaded from the Google Drive link in [Data]({% link tracks/track-2/data.md %}#how-to-obtain-the-data):
+The corpus keeps the structure of the zip you downloaded from the Google Drive link in [Data]({% link tracks/track-2/data.md %}#how-to-obtain-the-data), so inside the container it looks like this:
 
 ```
 /corpus/
@@ -113,7 +113,7 @@ The corpus keeps the structure of the zip you downloaded from the Google Drive l
   parties/            public_sanctions.json, internal_flagged.json
 ```
 
-Compose mounts `./data` at **`/corpus`**, read-only; to keep the data somewhere else, start with `CORPUS_DIR=/path/to/data docker compose up -d`. Note that `CORPUS_DIR` means the host directory to compose, while inside the container your application reads it as the corpus path, defaulting to `/corpus`.
+**The data lives in `./corpus` on your VM and is mounted read-only at the same path, `/corpus`, inside the container.** Unzip it into `./corpus`, next to `compose.yaml`, and read it from `/corpus` in your code. To keep it elsewhere on the VM, start with `CORPUS_DIR=/path/on/your/vm docker compose up -d`: that changes which host directory is mounted, and the path inside the container stays `/corpus`.
 
 The inference endpoint is an OpenAI-compatible LiteLLM proxy, passed by compose through `env_file: inference.env`; read `OPENAI_BASE_URL`, `OPENAI_API_KEY` and `MODEL` from the environment, do not hard-code them. An `inference.env.example` is in the template.
 

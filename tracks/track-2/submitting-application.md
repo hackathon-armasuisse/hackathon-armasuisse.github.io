@@ -22,7 +22,7 @@ docker compose up -d --build
 `compose.yaml` already sets `restart: unless-stopped` on both containers, so your deployment comes back by itself after a reboot.
 
 - Serve `/advise` on port **8080**
-- Keep the data mounted read-only at **`/corpus`** (compose mounts `./data` there, or set `CORPUS_DIR` on the host), with the layout given in [Data]({% link tracks/track-2/data.md %}#how-to-obtain-the-data).
+- Keep the data in **`./corpus`** on the VM, which compose mounts read-only at the same path inside the container, with the layout given in [Data]({% link tracks/track-2/data.md %}#how-to-obtain-the-data).
 - Pass the inference variables from `inference.env`, which compose reads through `env_file`. Read these exact variable names, do not hard-code them:
 
   | Variable | Value |
