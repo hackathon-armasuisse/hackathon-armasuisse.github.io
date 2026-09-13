@@ -45,7 +45,6 @@ Specifically, we provide additional context about what is in the feed worth extr
 
 ---
 
-
 ## Submitting
 
 Write up the exploit, the evidence, and the reproduction steps, then submit it through the form on the [Submitting Exploits]({% link submitting-exploits.md %}) page.
