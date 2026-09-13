@@ -56,16 +56,7 @@ For embedding, we host three models on the inference endpoint, called on `/embed
 | `zylonai/multilingual-e5-large:latest` | 1024 | multilingual; the E5 family expects `query: ` and `passage: ` prefixes |
 | `qwen3-embedding:8b` | 4096 | largest of the three; four times the vector size, so more memory and slower similarity search |
 
-```python
-from openai import OpenAI
-client = OpenAI()          # reads OPENAI_BASE_URL and OPENAI_API_KEY from the env
-v = client.embeddings.create(model="bge-m3:latest", input="gas cylinder lock torque")
-print(len(v.data[0].embedding))   # 1024
-```
-
-Which one is best depends on your corpus, and finding out is a twenty-minute experiment rather than a matter of opinion: embed your dev questions and your chunks with each, and measure how often the right chunk comes back. The full model menu, including the chat models, is on the [Infrastructure]({% link infrastructure.md %}#available-models) page.
-
-You can also run an embedding model locally on your VM with [sentence-transformers](https://sbert.net/) if you want to be independent of the endpoint, and you should in any case consider a keyword index alongside the vectors. Dense retrieval is good at paraphrase and bad at exact identifiers, and your corpora are full of exact identifiers — `6A003`, `TM-9-1005-249-10`, `S-02278`, part numbers — which embeddings blur. [`rank_bm25`](https://github.com/dorianbrown/rank_bm25) is a few lines of code, and fusing the two rankings usually beats either alone.
+It can be worthwhile to experiment with the different embedding models, to see whether one gives better retrieval for your corpus. The embedding model is **not** the same as the model you use for generation; you can mix and match.
 
 ---
 
