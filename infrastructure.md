@@ -42,7 +42,7 @@ Three chat models and three embedding models, the same menu for every team. Use 
 | Model id | Kind | Notes |
 |---|---|---|
 | `swiss-ai/Apertus-70B-Instruct-2509` | chat | Apertus, 70B, the Swiss open model |
-| `deepseek-ai/DeepSeek-V4-Flash-0731` | chat | 304B; a reasoning model, so responses also carry a `reasoning_content` field |
+| `Qwen/Qwen3.8-Flash-Next` | chat | 180B |
 | `mistralai/Mistral-Medium-3.5-128B` | chat | 128B |
 | `bge-m3:latest` | embedding | 1024 dimensions, multilingual |
 | `zylonai/multilingual-e5-large:latest` | embedding | 1024 dimensions, multilingual |
