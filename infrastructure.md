@@ -39,16 +39,28 @@ Read `OPENAI_BASE_URL`, `OPENAI_API_KEY` and `MODEL` from the environment. Do no
 
 Three chat models and three embedding models, the same menu for every team. Use the **exact** ids below as the `model` value; a typo returns an error rather than a fallback.
 
-| Model id | Kind | Notes |
-|---|---|---|
-| `swiss-ai/Apertus-70B-Instruct-2509` | chat | Apertus, 70B, the Swiss open model |
-| `Qwen/Qwen3.8-Flash-Next` | chat | 180B |
-| `mistralai/Mistral-Medium-3.5-128B` | chat | 128B |
-| `bge-m3:latest` | embedding | 1024 dimensions, multilingual |
-| `zylonai/multilingual-e5-large:latest` | embedding | 1024 dimensions, multilingual |
-| `qwen3-embedding:8b` | embedding | 4096 dimensions |
+**Chat models**, called on `/chat/completions`:
 
-Chat models are called on `/chat/completions`, embedding models on `/embeddings`. You can list the menu yourself at any time:
+| Model id | Context window | temperature | top_p | top_k |
+|---|---|---|---|---|
+| `google/gemma-4-31B-it` | 262,144 tokens | 1.0 | 0.95 | 64 |
+| `Qwen/Qwen3.8-Flash-Next` | 262,144 tokens | 1.0 | 0.95 | 20 |
+| `mistralai/Mistral-Medium-3.5-128B` | 262,144 tokens | 1.0 | 1 | -1 |
+
+Those are the sampling defaults applied when you do not set the parameter yourself; all three take the usual OpenAI parameters, so you can override any of them per request. `top_k = -1` means no top-k filtering at all. For grounded, extractive answers you will usually want a temperature well below the default of 1.0.
+
+{: .note }
+> `Qwen/Qwen3.8-Flash-Next` is a reasoning model: its responses carry a `reasoning_content` field alongside `content`. Read the answer from `content`, and do not show `reasoning_content` to a user or feed it back as context without thinking about what is in it.
+
+**Embedding models**, called on `/embeddings`:
+
+| Model id | Dimensions | Notes |
+|---|---|---|
+| `bge-m3:latest` | 1024 | multilingual |
+| `zylonai/multilingual-e5-large:latest` | 1024 | multilingual; the E5 family expects `query: ` and `passage: ` prefixes |
+| `qwen3-embedding:8b` | 4096 | largest of the three |
+
+You can list the menu yourself at any time:
 
 ```bash
 curl -H "Authorization: Bearer $OPENAI_API_KEY" https://litellm.hackathon.intlab.ch/v1/models
